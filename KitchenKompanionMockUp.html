@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Kompanion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<style>
+    .device {
+        margin: auto;
+        width: 640px;
+        height: 960px;
+        overflow: hidden;
+        background-color: #FDF7F1;
+        position: relative;
+        text-align: left;
+    }
+
+    h1 {
+        color: #3A2C26;
+        font-family: Overpass;
+    }
+
+    h2 {
+        color: #3A2C26;
+        font-family: Overpass;
+    }
+
+    p {
+        color: #665140;
+        font-family: Overpass;
+
+    }
+
+    select {
+        width: fit-content;
+    }
+
+    fieldset {
+        width: fit-content;
+    }
+
+    button {
+        width: fit-content;
+    }
+
+    footer {
+        margin: auto;
+        width: 640px;
+        overflow: hidden;
+        background-color: #fcf7f2;
+        position: relative;
+    }
+
+    .tablink {
+        background-color: #F9D2BA;
+        color: black;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 17px;
+        width: 20%;
+        text-align: center;
+        gap: 6px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    button {
+        align-content: center;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+
+    }
+
+    .header_text {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        justify-content: space-between;
+        padding-right: 50px;
+
+    }
+
+    .header_logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+
+    }
+
+    /* Change background color of buttons on hover */
+    .tablink:hover {
+        background-color: #3A2C26;
+    }
+
+    /* Set default styles for tab content */
+    .tabcontent {
+        color: white;
+        display: none;
+        padding: 50px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .FridgeFreezer {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 20rem;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    .FridgeFreezerBoxes {
+        align-content: center;
+        display: flex;
+        height: 9rem;
+        box-sizing: border-box;
+    }
+
+    .Fridge {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        flex: 1;
+        text-align: center;
+    }
+
+    .Freezer {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        flex: 1;
+        text-align: center;
+    }
+
+    .Expiring {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 15rem;
+        padding: 5px;
+        border-radius: 10px;
+
+    }
+
+    .ExpiringFood {
+        align-content: center;
+        display: flex;
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        height: 9rem;
+        box-sizing: border-box;
+    }
+
+    .ExpiringFood h2 {
+        margin: 5px;
+    }
+
+    .FirstRowWidgets {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .SecondRowWidgets {
+        justify-content: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: .5rem;
+    }
+
+
+    .RecentlyAdded {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    .RecentlyAddedItems {
+        align-content: center;
+        display: flex;
+        height: 9rem;
+        box-sizing: border-box;
+        gap: 5px;
+    }
+
+    .Milk {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        width: 10rem;
+        text-align: center;
+    }
+
+    .Eggs {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        width: 10rem;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="device">
+        <div class="header">
+            <div class="header_logo">
+                <img src="/icons/leaves.png" width="50" height="50">
+                <h2>Kitchen Kompanion</h2>
+            </div>
+            <div class="header_text">
+                <h2>Time: 12:00</h2>
+                <h2>Date: 1/1</h2>
+            </div>
+        </div>
+
+        <div class="FirstRowWidgets">
+            <div class="FridgeFreezer">
+                <h1>Fridge & Freezer</h1>
+                <div class="FridgeFreezerBoxes">
+                    <div class="Fridge">
+                        <h2>Fridge</h2>
+                        <hr>
+                        <h1>37&deg;F</h1>
+                    </div>
+                    <div class="Freezer">
+                        <h2>Freezer</h2>
+                        <hr>
+                        <h1>0&deg;F</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="Expiring">
+                <h1>Expiring Soon</h1>
+                <div class="ExpiringFood">
+                    <ul>
+                        <li>
+                            <h2>Milk: 1 Day</h2>
+                        </li>
+                        <li>
+                            <h2>Spinach: 2 Days</h2>
+                        </li>
+                        <li>
+                            <h2>Cheese: 3 Day</h2>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="SecondRowWidgets">
+            <div class="RecentlyAdded">
+                <h1>Recently Added</h1>
+                <div class="RecentlyAddedItems">
+                    <div class="Milk">
+                        <img src="/icons/milk-bottle.png" width="80" height="80">
+                        <p>Milk<br>5 days ago</p>
+                    </div>
+                    <div class="Eggs">
+                        <img src="/icons/eggs.png" width="80" height="80">
+                        <p>Eggs<br>3 days ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <footer>
+        <button class="tablink" onclick="window.location.href='text.html'" id=" defaultOpen">
+            <img src="icons/settings.png" width="50" height="50">
+            <p1>Settings</p1>
+        </button>
+        <button class="tablink" onclick="window.location.href='LR.html'">
+            <img src="icons/grocery.png" width="50" height="50">
+            <p1>Groceries</p1>
+        </button>
+        <button class="tablink" onclick="window.location.href='Colors.html'">
+            <img src="icons/recipe-book.png" width="50" height="50">
+            <p1>Recipes</p1>
+        </button>
+        <button class="tablink" onclick="window.location.href='Choices.html'">
+            <img src="icons/spatula.png" width="50" height="50">
+            <p1>Appliances</p1>
+        </button>
+        <button class="tablink" onclick="window.location.href='Profile.html'">
+            <img src="icons/user.png" width="50" height="50">
+            <p1>Profile</p1>
+        </button>
+
+
+
+    </footer>
+</body>
+
+</html>
