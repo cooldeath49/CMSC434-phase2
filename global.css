@@ -1,221 +1,221 @@
 .device {
-        margin: auto;
-        width: 640px;
-        height: 960px;
-        overflow: hidden;
-        background-color: #FDF7F1;
-        position: relative;
-        text-align: left;
-    }
+    margin: auto;
+    width: 640px;
+    height: 960px;
+    overflow: hidden;
+    background-color: #FDF7F1;
+    position: relative;
+    text-align: left;
+}
 
-    h1 {
-        color: #3A2C26;
-        font-family: Overpass;
-    }
+h1 {
+    color: #3A2C26;
+    font-family: Overpass;
+}
 
-    h2 {
-        color: #3A2C26;
-        font-family: Overpass;
-    }
+h2 {
+    color: #3A2C26;
+    font-family: Overpass;
+}
 
-    p {
-        color: #665140;
-        font-family: Overpass;
+p {
+    color: #665140;
+    font-family: Overpass;
 
-    }
+}
 
-    select {
-        width: fit-content;
-    }
+select {
+    width: fit-content;
+}
 
-    fieldset {
-        width: fit-content;
-    }
+fieldset {
+    width: fit-content;
+}
 
-    button {
-        width: fit-content;
-    }
+button {
+    width: fit-content;
+}
 
-    footer {
-        margin: auto;
-        width: 640px;
-        overflow: hidden;
-        background-color: #fcf7f2;
-        position: relative;
-    }
+footer {
+    margin: auto;
+    width: 640px;
+    overflow: hidden;
+    background-color: #fcf7f2;
+    position: relative;
+}
 
-    .tablink {
-        background-color: #F9D2BA;
-        color: black;
-        float: left;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 17px;
-        width: 20%;
-        text-align: center;
-        gap: 6px;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
+.tablink {
+    background-color: #F9D2BA;
+    color: black;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 17px;
+    width: 20%;
+    text-align: center;
+    gap: 6px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
 
-    button {
-        align-content: center;
-    }
+button {
+    align-content: center;
+}
 
-    .header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        justify-content: space-between;
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
 
-    }
+}
 
-    .header_text {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        justify-content: space-between;
-        padding-right: 50px;
+.header_text {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+    padding-right: 50px;
 
-    }
+}
 
-    .header_logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        justify-content: space-between;
+.header_logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
 
-    }
+}
 
-    /* Change background color of buttons on hover */
-    .tablink:hover {
-        background-color: #3A2C26;
-    }
+/* Change background color of buttons on hover */
+.tablink:hover {
+    background-color: #3A2C26;
+}
 
-    /* Set default styles for tab content */
-    .tabcontent {
-        color: white;
-        display: none;
-        padding: 50px;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-    }
+/* Set default styles for tab content */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 50px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
 
-    .FridgeFreezer {
-        border-style: solid;
-        border-color: black;
-        border-width: 3px;
-        align-content: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 20rem;
-        padding: 5px;
-        border-radius: 10px;
-    }
+.FridgeFreezer {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20rem;
+    padding: 5px;
+    border-radius: 10px;
+}
 
-    .FridgeFreezerBoxes {
-        align-content: center;
-        display: flex;
-        height: 9rem;
-        box-sizing: border-box;
-    }
+.FridgeFreezerBoxes {
+    align-content: center;
+    display: flex;
+    height: 9rem;
+    box-sizing: border-box;
+}
 
-    .Fridge {
-        border-style: solid;
-        border-color: black;
-        border-width: 3px;
-        flex: 1;
-        text-align: center;
-    }
+.Fridge {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    flex: 1;
+    text-align: center;
+}
 
-    .Freezer {
-        border-style: solid;
-        border-color: black;
-        border-width: 3px;
-        flex: 1;
-        text-align: center;
-    }
+.Freezer {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    flex: 1;
+    text-align: center;
+}
 
-    .Expiring {
-        border-style: solid;
-        border-color: black;
-        border-width: 3px;
-        align-content: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 15rem;
-        padding: 5px;
-        border-radius: 10px;
+.Expiring {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15rem;
+    padding: 5px;
+    border-radius: 10px;
 
-    }
+}
 
-    .ExpiringFood {
-        align-content: center;
-        display: flex;
-        border-style: solid;
-        border-color: black;
-        border-width: 3px;
-        height: 9rem;
-        box-sizing: border-box;
-    }
+.ExpiringFood {
+    align-content: center;
+    display: flex;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    height: 9rem;
+    box-sizing: border-box;
+}
 
-    .ExpiringFood h2 {
-        margin: 5px;
-    }
+.ExpiringFood h2 {
+    margin: 5px;
+}
 
-    .FirstRowWidgets {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-    }
+.FirstRowWidgets {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
 
-    .SecondRowWidgets {
-        justify-content: center;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: .5rem;
-    }
+.SecondRowWidgets {
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+}
 
 
-    .RecentlyAdded {
-        border-style: solid;
-        border-color: black;
-        border-width: 3px;
-        align-content: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 5px;
-        border-radius: 10px;
-    }
+.RecentlyAdded {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 10px;
+}
 
-    .RecentlyAddedItems {
-        align-content: center;
-        display: flex;
-        height: 9rem;
-        box-sizing: border-box;
-        gap: 5px;
-    }
+.RecentlyAddedItems {
+    align-content: center;
+    display: flex;
+    height: 9rem;
+    box-sizing: border-box;
+    gap: 5px;
+}
 
-    .Milk {
-        border-style: solid;
-        border-color: black;
-        border-width: 3px;
-        width: 10rem;
-        text-align: center;
-    }
+.Milk {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    width: 10rem;
+    text-align: center;
+}
 
-    .Eggs {
-        border-style: solid;
-        border-color: black;
-        border-width: 3px;
-        width: 10rem;
-        text-align: center;
-    }
+.Eggs {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    width: 10rem;
+    text-align: center;
+}
