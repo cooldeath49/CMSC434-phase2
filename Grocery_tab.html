@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Kompanion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<style>
+    .device {
+        margin: auto;
+        width: 640px;
+        height: 960px;
+        overflow: hidden;
+        background-color: #FDF7F1;
+        position: relative;
+        text-align: left;
+    }
+
+    h1 {
+        color: #3A2C26;
+        font-family: Overpass;
+    }
+
+    h2 {
+        color: #3A2C26;
+        font-family: Overpass;
+    }
+
+    p {
+        color: #665140;
+        font-family: Overpass;
+
+    }
+
+    select {
+        width: fit-content;
+    }
+
+    fieldset {
+        width: fit-content;
+    }
+
+    button {
+        width: fit-content;
+    }
+
+    footer {
+        margin: auto;
+        width: 640px;
+        overflow: hidden;
+        background-color: #fcf7f2;
+        position: relative;
+    }
+
+    .tablink {
+        background-color: #F9D2BA;
+        color: black;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 17px;
+        width: 25%;
+        text-align: center;
+        gap: 6px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    button {
+        align-content: center;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+
+    }
+
+    .header_text {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        justify-content: space-between;
+        padding-right: 50px;
+
+    }
+
+    .header_logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+
+    }
+
+    /* Change background color of buttons on hover */
+    .tablink:hover {
+        background-color: #3A2C26;
+    }
+
+    /* Set default styles for tab content */
+    .tabcontent {
+        color: white;
+        display: none;
+        padding: 50px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .FridgeFreezer {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 20rem;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    .FridgeFreezerBoxes {
+        align-content: center;
+        display: flex;
+        height: 9rem;
+        box-sizing: border-box;
+    }
+
+    .Fridge {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        flex: 1;
+        text-align: center;
+    }
+
+    .Freezer {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        flex: 1;
+        text-align: center;
+    }
+
+    .Expiring {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 15rem;
+        padding: 5px;
+        border-radius: 10px;
+
+    }
+
+    .ExpiringFood {
+        align-content: center;
+        display: flex;
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        height: 9rem;
+        box-sizing: border-box;
+    }
+
+    .ExpiringFood h2 {
+        margin: 5px;
+    }
+
+    .FirstRowWidgets {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .SecondRowWidgets {
+        justify-content: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: .5rem;
+    }
+
+
+    .RecentlyAdded {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    .RecentlyAddedItems {
+        align-content: center;
+        display: flex;
+        height: 9rem;
+        box-sizing: border-box;
+        gap: 5px;
+    }
+
+    .Milk {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        width: 10rem;
+        text-align: center;
+    }
+
+    .Eggs {
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        width: 10rem;
+        text-align: center;
+    }
+
+    #add_button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    #grocery_list_form {
+        display: none;
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        flex: 1;
+        text-align: center;
+        width: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+    #list_item_form {
+        display: none;
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        flex: 1;
+        text-align: center;
+        width: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #add_item_button {
+        display: none;
+
+    }
+</style>
+
+<body>
+    <script>
+        function addGroceryListPopup() {
+            document.getElementById("grocery_list_form").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("grocery_list_form").style.display = "none";
+        }
+
+        function add_item_buttonShow() {
+            document.getElementById("add_item_button").style.display = "block";
+        }
+
+        // function add_item_buttonClose() {
+        //     document.getElementById("add_item_button").style.display = "block";
+        // }
+
+        function closeItemForm() {
+            document.getElementById("list_item_form").style.display = "none";
+        }
+
+        function addItemToGroceryList(event) {
+            event.preventDefault();
+            const itemName = document.getElementById("itemName").value;
+            const currList = {
+                itemName: itemName,
+            };
+            let lists = [];
+            lists.push(currList);
+            localStorage.setItem("currList", JSON.stringify(lists));
+            console.log(lists);
+            closeItemForm();
+            document.getElementById("item_lists").innerHTML += `<ul>`;
+            lists.forEach((x) => {
+                document.getElementById("item_lists").innerHTML +=
+                    `<li>${x.itemName}</li>`;
+            }
+            );
+            document.getElementById("item_lists").innerHTML += `</ul>`;
+            document.getElementById("addItemForm").reset();
+        }
+
+        function openAddForm() {
+            document.getElementById("list_item_form").style.display = "block";
+
+        }
+
+        function addGroceryList(event) {
+            event.preventDefault();
+            const title = document.getElementById("title").value;
+            const date = document.getElementById("date").value;
+            const groceryList = {
+                title: title,
+                date: date
+            };
+            let lists = [];
+            lists.push(groceryList);
+            localStorage.setItem("groceryLists", JSON.stringify(lists));
+            console.log(lists);
+            closeForm();
+            lists.forEach((x) => {
+                document.getElementById("grocery_lists").innerHTML +=
+                    `<h2><u>${x.title} added on: ${x.date}</u></h2>`;
+            }
+            );
+            add_item_buttonShow();
+            document.getElementById("form-container").reset();
+        }
+    </script>
+
+    <div class="device">
+        <div class="header">
+            <div class="header_logo">
+                <img src="/icons/leaves.png" width="50" height="50">
+                <h2>Groceries</h2>
+            </div>
+        </div>
+        <div class="body">
+            <img id="add_button" src="/icons/add.png" width="50" height="50" onclick="addGroceryListPopup()">
+        </div>
+
+
+        <div id="grocery_lists"></div>
+        <div id="item_lists"></div>
+        <img id="add_item_button" src="/icons/add.png" width="25" height="25" onclick="openAddForm()">
+
+
+
+        <div class="form-popup" id="grocery_list_form">
+            <form id="form-container" onsubmit="addGroceryList(event)">
+                <h1>New List</h1>
+
+                <label for="title"><b>Title</b></label>
+                <input type="text" id="title" placeholder="Enter Title" name="title" required><br>
+
+                <label for="date"><b>Date</b></label>
+                <input type="date" id="date" placeholder="Enter Date" name="date" required><br>
+
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+
+        <div class="form-popup" id="list_item_form">
+            <form id="addItemForm" onsubmit="addItemToGroceryList(event)">
+                <h1>Add Item</h1>
+
+                <label for="itemName"><b>Item Name:</b></label>
+                <input type="text" id="itemName" placeholder="Enter Item Name" name="itemName" required><br>
+
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+
+
+
+    </div>
+    <footer>
+        <button class="tablink" onclick="window.location.href='text.html'" id=" defaultOpen">
+            <img src="icons/settings.png" width="50" height="50">
+            <p1>Home</p1>
+        </button>
+        <button class="tablink" onclick="window.location.href='LR.html'">
+            <img src="icons/grocery.png" width="50" height="50">
+            <p1>Inventory</p1>
+        </button>
+        <button class="tablink" onclick="window.location.href='Grocery_tab.html'">
+            <img src="icons/recipe-book.png" width="50" height="50">
+            <p1>Groceries</p1>
+        </button>
+        <button class="tablink" onclick="window.location.href='Choices.html'">
+            <img src="icons/spatula.png" width="50" height="50">
+            <p1>Recipes</p1>
+        </button>
+        <!-- <button class="tablink" onclick="window.location.href='Profile.html'">
+            <img src="icons/user.png" width="50" height="50">
+            <p1>Profile</p1>
+        </button> -->
+
+
+
+    </footer>
+</body>
+
+</html>
