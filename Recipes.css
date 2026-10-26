@@ -1,0 +1,36 @@
+.recipes-top {
+    display: flex;
+    flex-direction: row;
+}
+
+.recipes-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-line {
+    width: 100%;
+    margin: 0;
+    border-top: 5px solid black;
+}
+
+.title {
+    padding-left: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings {
+    margin-left:auto;
+    padding: 2rem;
+}
+
+.search-bar {
+    height: auto;
+    font-size: 1.5rem;
+}
+
+.search-line {
+    margin: 0;
+    border-top: 3px solid black;
+}
