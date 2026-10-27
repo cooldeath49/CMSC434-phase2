@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="global.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
@@ -68,7 +67,10 @@
             </div>
 
             <div class="widget">
-                <h2>Kitchen Schedule Today</h2>
+                <div class="widget_header">
+                        <h2>Kitchen Schedule Today</h2>
+                        <button class="add_button">+ Add</button>
+                    </div>
                 <div class="scheduled_task">
                     <div class="task_time">2:00 PM</div>
                     <div>
@@ -113,7 +115,10 @@
                 </div>
 
                 <div class="widget">
-                    <h2>My Chores</h2>
+                    <div class="widget_header">
+                        <h2>My Chores</h2>
+                        <button class="add_button">+ Add</button>
+                    </div>
                     <label class="chore">
                         <input type="checkbox">
                         <span>Wipe counters</span>
@@ -128,7 +133,7 @@
         </div>
 
         <footer>
-            <button class="tablink" onclick="window.location.href='Home.html'" id=" defaultOpen">
+            <button class="tablink active" onclick="window.location.href='Home.html'" id=" defaultOpen">
                 <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
                 <p1>Home</p1>
             </button>

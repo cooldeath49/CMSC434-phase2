@@ -122,6 +122,23 @@ p {
     color: #FFFFFF;
 }
 
+.add_button {
+    border: 2px solid #3A2C26;
+    border-radius: 20px;
+    background-color: #F9D2BA;
+    color: #3A2C26;
+    font-family: Overpass, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
+.add_button:hover {
+    background-color: #3A2C26;
+    color: #FFFFFF;
+}
+
 .widget_row {
     display: flex;
     gap: 12px;
