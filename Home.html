@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="global.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="device">
+        <div class="header">
+            <div class="header_logo">
+                <img class="header_logo" src="icons/leaves.svg" width="50" height="50">
+                <h1>Home</h1>
+            </div>
+            <button class="hamburger_menu">≡</button>
+        </div>
+        <p>Week of Oct. 25 to Oct. 31</p>
+
+        <div class="content">
+            <div class="widget">
+                <h2>This Week</h2>
+                <div class="week">
+                    <div class="day">
+                        <div class="day_name">Sun</div>
+                        <div class="day_num">25</div>
+                        <div class="day_tasks">2 tasks</div>
+                    </div>
+                    <div class="day today">
+                        <div class="day_name">Mon</div>
+                        <div class="day_num">26</div>
+                        <div class="day_tasks">3 tasks</div>
+                    </div>
+                    <div class="day">
+                        <div class="day_name">Tue</div>
+                        <div class="day_num">27</div>
+                        <div class="day_tasks">2 tasks</div>
+                    </div>
+                    <div class="day">
+                        <div class="day_name">Wed</div>
+                        <div class="day_num">28</div>
+                        <div class="day_tasks">Free</div>
+                    </div>
+                    <div class="day">
+                        <div class="day_name">Thu</div>
+                        <div class="day_num">29</div>
+                        <div class="day_tasks">1 task</div>
+                    </div>
+                    <div class="day">
+                        <div class="day_name">Fri</div>
+                        <div class="day_num">30</div>
+                        <div class="day_tasks">2 tasks</div>
+                    </div>
+                    <div class="day">
+                        <div class="day_name">Sat</div>
+                        <div class="day_num">31</div>
+                        <div class="day_tasks">4 tasks</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget">
+                <h2>Kitchen Schedule Today</h2>
+                <div class="scheduled_task">
+                    <div class="task_time">2:00 PM</div>
+                    <div>
+                        <span class="task">Cooking</span>
+                        <div class="task_title">Chicken Wings</div>
+                        <p>Daniel: Oven until 3:00 PM</p>
+                    </div>
+                </div>
+                <div class="scheduled_task">
+                    <div class="task_time">6:00 PM</div>
+                    <div>
+                        <span class="task">Cooking</span>
+                        <div class="task_title">Dumplings</div>
+                        <p>You: Stove until 7:00 PM</p>
+                    </div>
+                </div>
+                <div class="scheduled_task">
+                    <div class="task_time">9:00 PM</div>
+                    <div>
+                        <span class="task">Chore</span>
+                        <div class="task_title">Unload dishwasher</div>
+                        <p>Arthur</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget_row">
+                <div class="widget">
+                    <h2>Expiring Soon</h2>
+                    <ul class="expiring_soon">
+                        <li>
+                            <span class="task">In 2 days</span>
+                            <div class="task_title">Milk</div>
+                            <p>Shared: 1 gallon</p>
+                        </li>
+                        <li>
+                            <span class="task">In 3 days</span>
+                            <div class="task_title">Salmon</div>
+                            <p>Nick: 1 pack</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="widget">
+                    <h2>My Chores</h2>
+                    <label class="chore">
+                        <input type="checkbox">
+                        <span>Wipe counters</span>
+                    </label>
+                    <label class="chore">
+                        <input type="checkbox">
+                        <span>Take out trash</span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <button class="tablink" onclick="window.location.href='Home.html'" id=" defaultOpen">
+                <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
+                <p1>Home</p1>
+            </button>
+            <button class="tablink" onclick="window.location.href='Inventory.html'">
+                <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
+                <p1>Inventory</p1>
+            </button>
+            <button class="tablink" onclick="window.location.href='Groceries.html'">
+                <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50">
+                <p1>Groceries</p1>
+            </button>
+            <button class="tablink" onclick="window.location.href='Recipes.html'">
+                <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
+                <p1>Recipes</p1>
+            </button>
+        </footer>
+    </div>
+</body>
+</html>
