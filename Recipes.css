@@ -34,3 +34,22 @@
     margin: 0;
     border-top: 3px solid black;
 }
+
+.recipe {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+.recipe-title {
+    font-size: 1.75rem;
+
+}
+
+.recipe-time-difficulty {
+    display: flex;
+    font-size: 1.25rem;
+    flex-direction: row;
+    gap: 2rem;
+}
