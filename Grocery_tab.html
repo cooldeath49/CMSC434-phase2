@@ -312,11 +312,10 @@
             document.getElementById("item_lists").innerHTML += `<ul>`;
             lists.forEach((x) => {
                 document.getElementById("item_lists").innerHTML +=
-                    `<li>${x.itemName}</li>`;
+                    `<li><h3><input type="checkbox" id="${x.itemName}_checkbox">&nbsp;&nbsp;${x.itemName}</h3></li>`;
             }
             );
             document.getElementById("item_lists").innerHTML += `</ul>`;
-            document.getElementById("addItemForm").reset();
         }
 
         function openAddForm() {
