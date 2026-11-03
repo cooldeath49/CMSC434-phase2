@@ -53,3 +53,66 @@
     flex-direction: row;
     gap: 2rem;
 }
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.recipe-scroll {
+    position: relative;
+    height: 860px;
+    overflow: scroll;
+}
+
+#add-button {
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    padding: 2rem;
+}
+
+#add-form {
+    position: absolute;
+    margin: auto;
+    width: 500px;
+    height: 650px;
+    background-color: #FDF7F1;
+    inset: 0;
+    text-align: center;
+    border: 3px solid black;
+}
+
+.fieldset {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 0 auto;
+    align-items: center;
+    /* justify-content: center; */
+    margin-bottom: 1rem;
+}
+
+
+#duration {
+    width: 100px;
+}
+
+input, select {
+    height: 24px;  
+    font-size: 20px; 
+    margin-bottom: 8px;
+}
+
+#instructions {
+    /* justify-content: left; */
+    /* align-items: left; */
+    width: 400px;
+    font-size: 16px;
+}
+
+#instruction1 {
+    justify-content: center;
+    align-items: centers;
+}
