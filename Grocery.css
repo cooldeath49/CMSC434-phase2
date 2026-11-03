@@ -244,7 +244,7 @@
         padding: 1rem;
     }
 
-    #list_item_form {
+    .list_item_form {
         display: none;
         border-style: solid;
         border-color: black;
