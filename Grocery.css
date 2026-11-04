@@ -1,12 +1,14 @@
 .device {
-    margin: auto;
-    width: 640px;
-    height: 960px;
-    overflow: hidden;
-    background-color: #FDF7F1;
-    position: relative;
-    text-align: left;
-}
+        margin: auto;
+        width: 640px;
+        height: 960px;
+        overflow: hidden;
+        background-color: #FDF7F1;
+        position: relative;
+        text-align: left;
+        padding: 0 20px 20px;
+        box-sizing: border-box;
+    }
 
 h1 {
     color: #3A2C26;
@@ -229,36 +231,86 @@ button {
     padding: 2rem;
 }
 
-#grocery_list_form {
-    display: none;
-    border-style: solid;
-    border-color: black;
-    border-width: 3px;
-    flex: 1;
-    text-align: center;
-    width: fit-content;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1rem;
-}
+    #grocery_list_form {
+        display: none;
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        flex: 1;
+        text-align: center;
+        width: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #3A2C26;
+        background-color: #F9D2BA;
+        border: 2px solid #3A2C26;
+        border-radius: 12px;
+        font-family: Overpass, sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 8px 14px;
+    }
 
-#list_item_form {
-    display: none;
-    border-style: solid;
-    border-color: black;
-    border-width: 3px;
-    flex: 1;
-    text-align: center;
-    width: fit-content;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+    .list_item_form {
+        display: none;
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        flex: 1;
+        text-align: center;
+        width: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #3A2C26;
+        background-color: #F9D2BA;
+        border: 2px solid #3A2C26;
+        border-radius: 12px;
+        font-family: Overpass, sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 8px 14px;
+    }
 
 #add_item_button {
     display: none;
 
-}
+    }
+
+    .grocery_list{
+    border: 3px solid black;
+    border-radius: 8px;
+    padding: 12px;
+    background-color: #FFFFFF;
+    margin-bottom: 12px;
+    }
+
+    .grocery_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    }
+
+    .grocery_item h3 {
+    margin: 0;
+    }
+
+    .grocery_item img {
+    cursor: pointer;
+    flex-shrink: 0;
+    }
+
+    /* #addItemForm{
+    color: #3A2C26;
+    background-color: #F9D2BA;
+    border: 2px solid #3A2C26;
+    border-radius: 12px;
+    font-family: Overpass, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 14px;
+    } */

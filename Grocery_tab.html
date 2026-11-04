@@ -17,6 +17,13 @@
 <body>
     <script>
 
+        function removeGroceryItem(title, index) {
+            let target_list = JSON.parse(localStorage.getItem(`groceryLists ${title}`));
+            target_list.items.splice(index, 1);
+            localStorage.setItem(`groceryLists ${title}`, JSON.stringify(target_list));
+            makeList(title);
+        }
+
 
         function addGroceryListPopup() {
             //grocery add button is pressed
@@ -37,30 +44,56 @@
         // }
 
         function closeItemForm() {
-            document.getElementById("list_item_form").style.display = "none";
+            // document.getElementsByClass("list_item_form").style.display = "none";
+            document.querySelectorAll(".list_item_form").forEach(element => {
+                element.style.display = "none";
+            });
         }
 
         function addItemToGroceryList(event, title) {
+            console.log("Adding item to:", title);
             event.preventDefault();
-            const itemName = document.getElementById("itemName").value;
-            let target_element = documen.getElementById("grocery-list " + title)
+            // const itemName = document.getElementById("itemName").value;
+            const itemName = event.target.elements["itemName"].value;
+            let target_list = JSON.parse(localStorage.getItem(`groceryLists ${title}`));
+            target_list.items.push(itemName);
+            localStorage.setItem(`groceryLists ${title}`, JSON.stringify(target_list));
+            closeItemForm();
+            makeList(title);
+        }
+
+        function makeList(title) {
+            let target_element = document.getElementById("grocery-list " + title);
+            let target_list = JSON.parse(localStorage.getItem(`groceryLists ${title}`));
+
+            console.log(target_list);
             // localStorage.setItem("currList", JSON.stringify());
             closeItemForm();
-            target_element.innerHTML += `
-            <ul>
-                <li>
-                    <h3>
-                        <input type="checkbox" id="${itemName}_checkbox">&nbsp;&nbsp;${itemName}
-                    </h3>
-                </li>
-            </ul>`;
+            target_element.innerHTML = '';
+            target_element.innerHTML += `<ul>`;
+            target_list.items.forEach((x, i) => {
+                target_element.innerHTML += `
+                 <li>
+                    <div class='grocery_item'>
+                    <h3>${x}</h3>
+                     <img src='icons/remove.png' width="25" height="25" onclick="removeGroceryItem('${title}',${i})">
+                    </div>
+                    </li>
+                    `
+            });
+            target_element.innerHTML += `</ul>`;
         }
 
         function openAddForm(title) {
-            let item_form = document.getElementById("list_item_form")
+            let item_form = document.getElementById(`add_form_${title}`);
+            // let check = document.getElementById("list_item_form");
+
+
+
             item_form.style.display = "block";
-            item_form.innerHTML = `<div class="form-popup" id="list_item_form">
-           <form id="addItemForm" onsubmit="addItemToGroceryList(event, ${title})">
+            item_form.innerHTML =
+                `<div class="form-popup list_item_form" id="list_item_form_${title}">
+           <form id="addItemForm" onsubmit="addItemToGroceryList(event, '${title}')">
                <h1>Add Item To ${title}</h1>
 
 
@@ -71,10 +104,10 @@
                <button type="submit">Submit</button>
                <button type="button" onclick="closeItemForm()">Close</button>
            </form>
-       </div>`;
+            </div>`;
 
-
-
+            // console.log(title + 'was here');
+            document.getElementById(`list_item_form_${title}`).style.display = "block";
         }
 
         function addGroceryList(event) {
@@ -86,16 +119,17 @@
                 date: date,
                 items: []
             };
-            localStorage.setItem("groceryLists", JSON.stringify(groceryList));
+            localStorage.setItem(`groceryLists ${title}`, JSON.stringify(groceryList));
             console.log(groceryList);
             closeForm();
 
             document.getElementById("grocery_lists").innerHTML += `
-            <div id="grocery ${title}">
+            <div class='grocery_list' id="grocery ${title}">
                 <h2><u>${title} added on: ${date}</u></h2>
+                <div id='add_form_${title}'></div>
                 <div id="grocery-list ${title}">
                 </div>
-                <img id="add_item ${title}" src="/icons/add.png" width="25" height="25" onclick="openAddForm()">
+                <img id="add_item ${title}" src="/icons/add.png" width="25" height="25" onclick="openAddForm('${title}')">
             </div> 
             `;
             add_item_buttonShow(title);
@@ -126,7 +160,9 @@
         </div>
 
 
-        <div id="grocery_lists"></div>
+        <div id="grocery_lists">
+
+        </div>
         <!-- <div id="item_lists"></div> -->
         <!-- <img id="add_item_button" src="/icons/add.png" width="25" height="25" onclick="openAddForm()"> -->
 
@@ -166,7 +202,7 @@
             <p1>Home</p1>
         </button>
         <button class="tablink" onclick="window.location.href='Inventory.html'">
-            <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
+            <img class="tablink_icon" src="icons/inventory.png" width="50" height="50">
             <p1>Inventory</p1>
         </button>
         <button class="tablink active" onclick="window.location.href='Grocery_tab.html'">
@@ -174,7 +210,7 @@
             <p1>Groceries</p1>
         </button>
         <button class="tablink" onclick="window.location.href='Recipes.html'">
-            <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
+            <img class="tablink_icon" src="icons/recipes.png" width="50" height="50">
             <p1>Recipes</p1>
         </button>
     </footer>
