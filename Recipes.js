@@ -2,6 +2,10 @@ function openRecipeForm() {
   document.getElementById("add-form").style.display = "flex";
 }
 
+function closeRecipeForm() {
+  document.getElementById("add-form").style.display = "none";
+}
+
 function addRecipe() {
   let alerts = "";
   let recipeName = document.getElementById("recipe-name");
@@ -49,6 +53,12 @@ function addRecipe() {
       "recipe-count",
       parseInt(localStorage.getItem("recipe-count")) + 1,
     );
+
+    localStorage.removeItem("temp-instructions");
+    localStorage.removeItem("temp-ingredients");
+
+    document.getElementById("instructions-list").innerHTML = ""; //actual element for storing it
+    document.getElementById("ingredients-list").innerHTML = ""; //actual element for storing it
 
     document.getElementById("add-form").style.display = "none";
     //increment the count

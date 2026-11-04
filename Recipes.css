@@ -81,13 +81,15 @@ body {
   display: none;
   flex-direction: column;
   width: 500px;
-  height: 650px;
+  height: fit-content;
   background-color: #fdf7f1;
   inset: 0;
   text-align: center;
   align-items: center;
   border: 3px solid black;
   overflow: scroll;
+  overflow-x: hidden;
+  padding-bottom: 20px;
 }
 
 .fieldset {
@@ -138,7 +140,13 @@ select {
     color: #FDF7F1;
 } */
 
-#submit-recipe {
+#buttons {
+  display: flex;
+  gap: 10px;
+}
+
+#submit-recipe,
+#close-recipe {
   border: 3px solid #3a2c26;
   width: fit-content;
   padding: 5px;
