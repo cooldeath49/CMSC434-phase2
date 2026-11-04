@@ -7,6 +7,7 @@
         position: relative;
         text-align: left;
         padding: 0 20px 20px;
+        box-sizing: border-box;
     }
 
     h1 {
@@ -45,6 +46,7 @@
         overflow: hidden;
         background-color: #fcf7f2;
         position: relative;
+        box-sizing: border-box;
     }
 
     .tablink {
@@ -242,7 +244,14 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        padding: 1rem;
+        color: #3A2C26;
+        background-color: #F9D2BA;
+        border: 2px solid #3A2C26;
+        border-radius: 12px;
+        font-family: Overpass, sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 8px 14px;
     }
 
     .list_item_form {
@@ -278,6 +287,22 @@
     padding: 12px;
     background-color: #FFFFFF;
     margin-bottom: 12px;
+    }
+
+    .grocery_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    }
+
+    .grocery_item h3 {
+    margin: 0;
+    }
+
+    .grocery_item img {
+    cursor: pointer;
+    flex-shrink: 0;
     }
 
     /* #addItemForm{

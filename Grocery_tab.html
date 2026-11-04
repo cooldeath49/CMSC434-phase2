@@ -16,6 +16,13 @@
 <body>
     <script>
 
+        function removeGroceryItem(title, index) {
+            let target_list = JSON.parse(localStorage.getItem(`groceryLists ${title}`));
+            target_list.items.splice(index, 1);
+            localStorage.setItem(`groceryLists ${title}`, JSON.stringify(target_list));
+            makeList(title);
+        }
+
 
         function addGroceryListPopup() {
             //grocery add button is pressed
@@ -47,21 +54,30 @@
             event.preventDefault();
             // const itemName = document.getElementById("itemName").value;
             const itemName = event.target.elements["itemName"].value;
-            let target_element = document.getElementById("grocery-list " + title);
             let target_list = JSON.parse(localStorage.getItem(`groceryLists ${title}`));
             target_list.items.push(itemName);
             localStorage.setItem(`groceryLists ${title}`, JSON.stringify(target_list));
+            closeItemForm();
+            makeList(title);
+        }
+
+        function makeList(title) {
+            let target_element = document.getElementById("grocery-list " + title);
+            let target_list = JSON.parse(localStorage.getItem(`groceryLists ${title}`));
 
             console.log(target_list);
             // localStorage.setItem("currList", JSON.stringify());
             closeItemForm();
             target_element.innerHTML = '';
             target_element.innerHTML += `<ul>`;
-            target_list.items.forEach(x => {
+            target_list.items.forEach((x, i) => {
                 target_element.innerHTML += `
-                 <li><h3>
-                        <input type="checkbox" id="${x}_checkbox">&nbsp;&nbsp;${x}
-                    </h3></li>
+                 <li>
+                    <div class='grocery_item'>
+                    <h3>${x}</h3>
+                     <img src='icons/remove.png' width="25" height="25" onclick="removeGroceryItem('${title}',${i})">
+                    </div>
+                    </li>
                     `
             });
             target_element.innerHTML += `</ul>`;
@@ -184,19 +200,19 @@
     <!-- footer -->
     <footer>
         <button class="tablink active" onclick="window.location.href='Home.html'" id=" defaultOpen">
-            <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
+            <img class="tablink_icon" src="icons/home.png" width="50" height="50">
             <p1>Home</p1>
         </button>
         <button class="tablink" onclick="window.location.href='Inventory.html'">
-            <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
+            <img class="tablink_icon" src="icons/inventory.png" width="50" height="50">
             <p1>Inventory</p1>
         </button>
-        <button class="tablink" onclick="window.location.href='Groceries.html'">
-            <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50">
+        <button class="tablink" onclick="window.location.href='Grocery_tab.html'">
+            <img class="tablink_icon" src="icons/groceries.png" width="50" height="50">
             <p1>Groceries</p1>
         </button>
         <button class="tablink" onclick="window.location.href='Recipes.html'">
-            <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
+            <img class="tablink_icon" src="icons/recipes.png" width="50" height="50">
             <p1>Recipes</p1>
         </button>
     </footer>
