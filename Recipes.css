@@ -1,0 +1,241 @@
+body {
+  font-family: Overpass;
+}
+
+.recipes-top {
+  display: flex;
+  flex-direction: row;
+}
+
+.recipes-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-line {
+  width: 100%;
+  margin: 0;
+  border-top: 5px solid black;
+}
+
+.title {
+  padding-left: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings {
+  margin-left: auto;
+  padding: 2rem;
+}
+
+.search-bar {
+  height: auto;
+  font-size: 1.5rem;
+}
+
+.search-line {
+  margin: 0;
+  border-top: 3px solid black;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: solid 2px black;
+  transition: background-color 0.15s;
+  cursor: pointer;
+}
+
+.recipe:hover {
+    background-color: #e6d9cd;
+}
+
+.recipe-title {
+  font-size: 1.75rem;
+}
+
+.recipe-time-difficulty {
+  display: flex;
+  font-size: 1.25rem;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+#recipe-scroll {
+  position: relative;
+  height: 800px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#add-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 2rem;
+}
+
+#add-form {
+  position: absolute;
+  margin: auto;
+  display: none;
+  flex-direction: column;
+  width: 500px;
+  height: fit-content;
+  background-color: #fdf7f1;
+  inset: 0;
+  text-align: center;
+  align-items: center;
+  border: 3px solid black;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding-bottom: 20px;
+}
+
+#view-recipe {
+  position: absolute;
+  margin: auto;
+  /* display: none; */
+  flex-direction: column;
+  width: 500px;
+  height: fit-content;
+  background-color: #fdf7f1;
+  inset: 0;
+  text-align: center;
+  align-items: center;
+  border: 3px solid black;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding-bottom: 20px;
+}
+
+.fieldset {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 0 auto;
+  align-items: center;
+  /* justify-content: center; */
+  margin-bottom: 1rem;
+}
+
+#duration {
+  width: 100px;
+}
+
+input,
+select {
+  height: 24px;
+  font-size: 20px;
+}
+/* 
+.LocationPills {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 10px;
+    border-top: 3px solid black;
+    background-color: #FDF7F1;
+}
+
+.LocationPill {
+    flex: 1;
+    border: 3px solid #3A2C26;
+    border-radius: 999px;
+    background-color: #F9D2BA;
+    color: #3A2C26;
+    font-family: Overpass;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 4px;
+    cursor: pointer;
+}
+
+.LocationPill.active {
+    background-color: #3A2C26;
+    color: #FDF7F1;
+} */
+
+#buttons {
+  display: flex;
+  gap: 10px;
+}
+
+#submit-recipe,
+#close-recipe {
+  border: 3px solid #3a2c26;
+  width: fit-content;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+/* instruction/ingredient related stuff */
+
+#instructions,
+#ingredients {
+  /*div*/
+  /* justify-content: left; */
+  /* align-items: left; */
+  width: 400px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#instructions-list,
+#ingredients-list {
+  /*list where all the  go*/
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#ingredients-list {
+  gap: 5px;
+}
+
+#add-instruction,
+#add-ingredient {
+  /*add instruction div at the bottom*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-instruction-button,
+#add-ingredient-button {
+  padding-right: 10px;
+}
+
+#add-instruction-text,
+#add-ingredient-text {
+  height: 18px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.instruction,
+.ingredient {
+  /*actual unit of instruction to be added*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.instruction-number,
+.ingredient-dash {
+  /*number label for each instruction*/
+  font-size: 20px;
+}
