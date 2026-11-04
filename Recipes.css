@@ -62,7 +62,7 @@ body {
   height: 50px;
 }
 
-.recipe-scroll {
+#recipe-scroll {
   position: relative;
   height: 860px;
   overflow: scroll;
@@ -78,11 +78,14 @@ body {
 #add-form {
   position: absolute;
   margin: auto;
+  display: none;
+  flex-direction: column;
   width: 500px;
   height: 650px;
   background-color: #fdf7f1;
   inset: 0;
   text-align: center;
+  align-items: center;
   border: 3px solid black;
   overflow: scroll;
 }
@@ -107,7 +110,41 @@ select {
   height: 24px;
   font-size: 20px;
 }
+/* 
+.LocationPills {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 10px;
+    border-top: 3px solid black;
+    background-color: #FDF7F1;
+}
 
+.LocationPill {
+    flex: 1;
+    border: 3px solid #3A2C26;
+    border-radius: 999px;
+    background-color: #F9D2BA;
+    color: #3A2C26;
+    font-family: Overpass;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 4px;
+    cursor: pointer;
+}
+
+.LocationPill.active {
+    background-color: #3A2C26;
+    color: #FDF7F1;
+} */
+
+#submit-recipe {
+  border: 3px solid #3a2c26;
+  width: fit-content;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 25px;
+}
 /* instruction/ingredient related stuff */
 
 #instructions,

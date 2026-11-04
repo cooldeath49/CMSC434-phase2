@@ -1,5 +1,58 @@
+function openRecipeForm() {
+  document.getElementById("add-form").style.display = "flex";
+}
+
 function addRecipe() {
-  document;
+  let alerts = "";
+  let recipeName = document.getElementById("recipe-name");
+  let difficulty = document.getElementById("difficulty");
+  let duration = document.getElementById("duration");
+  console.log(recipeName.value, difficulty.value, duration.value);
+  if (!recipeName.value || !difficulty.value || !duration.value) {
+    if (recipeName.value == "") {
+      alerts += "recipe name ";
+    }
+    if (difficulty.value == "") {
+      alerts += "difficulty ";
+    }
+    if (duration.value == "") {
+      alerts += "duration ";
+    }
+    alert("Please provide " + alerts);
+    return;
+  } else {
+    let instructionsTable =
+      JSON.parse(localStorage.getItem("temp-instructions")) ?? []; //storage for adding instructions
+    let ingredientsTable =
+      JSON.parse(localStorage.getItem("temp-ingredients")) ?? []; //storage for adding instructions
+    let recipe = [difficulty, duration, ingredientsTable, instructionsTable];
+    let recipeScroll = document.getElementById("recipe-scroll");
+
+    recipeScroll.innerHTML += `
+      <div class="recipe" id="${recipeName.value}">
+        <div class="recipe-details">
+          <div class="recipe-title">${recipeName.value}</div>
+
+          <div class="recipe-time-difficulty">
+            <div class="recipe-difficulty">${difficulty.value}</div>
+            <div class="recipe-time">${duration.value}</div>
+          </div>
+        </div>
+
+      </div>
+    
+    `;
+
+    localStorage.setItem(recipeName, JSON.stringify(recipe)); //add recipe to localstorage
+
+    localStorage.setItem(
+      "recipe-count",
+      parseInt(localStorage.getItem("recipe-count")) + 1,
+    );
+
+    document.getElementById("add-form").style.display = "none";
+    //increment the count
+  }
 }
 
 function addInstruction() {
@@ -126,4 +179,6 @@ function removeIngredient(index) {
 }
 
 //upon the document loading, populate the webpage as needed
-document.addEventListener("DOMContentLoaded", () => {});
+document.addEventListener("DOMContentLoaded", () => {
+  localStorage.setItem("recipe-count", "0");
+});

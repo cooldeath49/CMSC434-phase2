@@ -36,13 +36,13 @@
       </div>
       <!-- HEADER -->
 
-      <div class="recipe-scroll">
+      <div id="recipe-scroll">
         <img
-          id="add-recipe"
+          id="add-button"
           src="/icons/add.png"
           width="50"
           height="50"
-          onclick="addRecipe()"
+          onclick="openRecipeForm()"
         />
 
         <!-- add recipe form -->
@@ -55,7 +55,7 @@
             <label for="recipe-name">Recipe Name</label>
             <input type="text" id="recipe-name" />
             <label for="difficulty">Difficulty</label>
-            <select name="difficulty" id="difficulty">
+            <select name="difficulty" id="difficulty" required>
               <option value="easy">Easy</option>
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
@@ -91,6 +91,7 @@
             </div>
           </fieldset>
 
+          <!-- instructions -->
           <fieldset class="fieldset">
             <legend>Instructions</legend>
 
@@ -116,61 +117,13 @@
             </div>
           </fieldset>
 
-          <div id="submit-recipe">Submit Recipe</div>
-        </div>
-        <div class="recipe">
-          <div class="recipe-details">
-            <div class="recipe-title">Tomatoes and Eggs</div>
-
-            <div class="recipe-time-difficulty">
-              <div class="recipe-difficulty">Easy</div>
-
-              <div class="recipe-time">30 min</div>
-            </div>
-          </div>
-
-          <img class="recipe-image" src="TBD" />
+          <submit id="submit-recipe" onclick="addRecipe()"
+            >Submit Recipe</submit
+          >
         </div>
 
-        <div class="recipe">
-          <div class="recipe-details">
-            <div class="recipe-title">Beef Chive Dumplings</div>
-
-            <div class="recipe-time-difficulty">
-              <div class="recipe-difficulty">Hard</div>
-
-              <div class="recipe-time">3 hr</div>
-            </div>
-          </div>
-          <img class="recipe-image" src="TBD" />
-        </div>
-
-        <div class="recipe">
-          <div class="recipe-details">
-            <div class="recipe-title">beef patty guide</div>
-
-            <div class="recipe-time-difficulty">
-              <div class="recipe-difficulty">Medium</div>
-
-              <div class="recipe-time">20 min</div>
-            </div>
-          </div>
-          <img class="recipe-image" src="TBD" />
-        </div>
-
-        <div class="recipe">
-          <div class="recipe-details">
-            <div class="recipe-title">Chicken Bake</div>
-
-            <div class="recipe-time-difficulty">
-              <div class="recipe-difficulty">Easy</div>
-
-              <div class="recipe-time">1 hr</div>
-            </div>
-          </div>
-          <img class="recipe-image" src="TBD" />
-        </div>
-      </div>
+        <!-- recipe unit -->
+        
     </div>
     <footer>
       <button
