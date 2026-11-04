@@ -108,9 +108,10 @@ select {
   font-size: 20px;
 }
 
-/* instruction related stuff */
+/* instruction/ingredient related stuff */
 
-#instructions {
+#instructions,
+#ingredients {
   /*div*/
   /* justify-content: left; */
   /* align-items: left; */
@@ -121,31 +122,40 @@ select {
   gap: 10px;
 }
 
-#instructions-list {
-  /*list where all the instructions go*/
+#instructions-list,
+#ingredients-list {
+  /*list where all the  go*/
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-#add-instruction {
+#ingredients-list {
+  gap: 5px;
+}
+
+#add-instruction,
+#add-ingredient {
   /*add instruction div at the bottom*/
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#add-instruction-button {
+#add-instruction-button,
+#add-ingredient-button {
   padding-right: 10px;
 }
 
-#add-instruction-text {
+#add-instruction-text,
+#add-ingredient-text {
   height: 18px;
   font-size: 14px;
   width: 100%;
 }
 
-.instruction {
+.instruction,
+.ingredient {
   /*actual unit of instruction to be added*/
   display: flex;
   flex-direction: row;
@@ -154,7 +164,8 @@ select {
   text-align: left;
 }
 
-.instruction-number {
+.instruction-number,
+.ingredient-dash {
   /*number label for each instruction*/
   font-size: 20px;
 }

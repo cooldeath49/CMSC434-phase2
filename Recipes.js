@@ -35,6 +35,43 @@ function addInstruction() {
       "temp-instructions",
       JSON.stringify(instructionsTable),
     );
+  } else {
+    alert("Please enter an instruction");
+  }
+}
+
+// highk is the same as above just changed elements
+function addIngredient() {
+  let text = document.getElementById("add-ingredient-text");
+  // there is input
+  if (text.value.length > 0) {
+    let ingredientsTable =
+      JSON.parse(localStorage.getItem("temp-ingredients")) ?? []; //storage for adding instructions
+    let listElement = document.getElementById("ingredients-list"); //actual element for storing it
+
+    console.log(ingredientsTable);
+    ingredientsTable.push(text.value);
+
+    listElement.innerHTML += `
+      <div class="ingredient" id="ingredient${ingredientsTable.length}">
+       <div class="ingredient-dash">- </div>
+          <div class="ingredient-text">
+              ${text.value}
+          </div>
+          <img
+            class="remove-ingredient"
+            src="icons/trash.png"
+            width="20"
+            height="20"
+            onclick="removeIngredient(${ingredientsTable.length})"
+          />
+      </div>
+    `;
+    text.value = "";
+
+    localStorage.setItem("temp-ingredients", JSON.stringify(ingredientsTable));
+  } else {
+    alert("Please enter an ingredient");
   }
 }
 
@@ -70,3 +107,23 @@ function removeInstruction(index) {
 
   localStorage.setItem("temp-instructions", JSON.stringify(instructionsTable));
 }
+
+//very similar to above but no need to update the numbers
+function removeIngredient(index) {
+  let listElement = document.getElementById("ingredients-list"); //actual element for storing it
+  let ingredientsTable = JSON.parse(localStorage.getItem("temp-ingredients"));
+  ingredientsTable.splice(index, 1);
+
+  // big updating logic here
+  let add = "";
+  console.log(ingredientsTable);
+  // iterate through all entries and relabel them based on new locations
+
+  let element = document.getElementById("ingredient" + index);
+  element.remove();
+
+  localStorage.setItem("temp-ingredients", JSON.stringify(ingredientsTable));
+}
+
+//upon the document loading, populate the webpage as needed
+document.addEventListener("DOMContentLoaded", () => {});

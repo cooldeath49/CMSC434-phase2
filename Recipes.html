@@ -48,6 +48,8 @@
         <!-- add recipe form -->
         <div id="add-form">
           <h1>Add Recipe</h1>
+
+          <!-- general -->
           <fieldset class="fieldset">
             <legend>General</legend>
             <label for="recipe-name">Recipe Name</label>
@@ -62,27 +64,38 @@
             <input type="text" id="duration" />
           </fieldset>
 
+          <!-- ingredients -->
+
+          <fieldset class="fieldset">
+            <legend>Ingredients</legend>
+
+            <div id="ingredients">
+              <div id="ingredients-list"></div>
+
+              <!-- bottom unit, will always be here -->
+              <div id="add-ingredient">
+                <img
+                  id="add-ingredient-button"
+                  src="/icons/add.png"
+                  width="25"
+                  height="25"
+                  onclick="addIngredient()"
+                />
+                <input
+                  type="text"
+                  id="add-ingredient-text"
+                  placeholder="Ingredients here..."
+                  maxlength="50"
+                />
+              </div>
+            </div>
+          </fieldset>
+
           <fieldset class="fieldset">
             <legend>Instructions</legend>
 
             <div id="instructions">
-              <div id="instructions-list">
-                <!-- unit of instruction -->
-                <!-- <div class="instruction" id="instruction1">
-                  <div class="instruction-number">1.</div>
-                  <div class="instruction-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor
-                  </div>
-                  <img
-                    class="remove-instruction"
-                    src="icons/trash.png"
-                    width="20"
-                    height="20"
-                    onclick="removeInstruction()"
-                  />
-                </div> -->
-              </div>
+              <div id="instructions-list"></div>
 
               <!-- bottom instruction unit, will always be here -->
               <div id="add-instruction">
@@ -102,6 +115,8 @@
               </div>
             </div>
           </fieldset>
+
+          <div id="submit-recipe">Submit Recipe</div>
         </div>
         <div class="recipe">
           <div class="recipe-details">
