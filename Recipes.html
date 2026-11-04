@@ -1,178 +1,190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kitchen Kompanion</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="Recipes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="Recipes.css" />
     <script src="Recipes.js"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-
-<body>
+  <body>
     <div class="device">
-
-        <!-- HEADER -->
-        <div class="recipes-header">
-            <div class="recipes-top">
-                <div class="title">
-                    <h1>Recipes</h1>
-                </div>
-                <img class="logo" src="/icons/leaves.png">
-            </div>
-
-            <hr class="header-line">
-            <div class="search-bar">
-                <img class="search-icon" src="/icons/search.png">
-                Search...
-                <img class="filter-icon" src="/icons/filter.png">
-                <hr class="search-line">
-            </div>
+      <!-- HEADER -->
+      <div class="recipes-header">
+        <div class="recipes-top">
+          <div class="title">
+            <h1>Recipes</h1>
+          </div>
+          <img class="logo" src="/icons/leaves.png" />
         </div>
-        <!-- HEADER -->
 
-        <div class="recipe-scroll">
-            <img id="add-recipe" src="/icons/add.png" width="50" height="50" onclick="addRecipe()">
-            <div id="add-form">
-                <h1>Add Recipe</h1>
-                <fieldset class="fieldset">
-                    <legend>General</legend>
-                    <label for="recipe-name">Recipe Name</label> <input type="text" id="recipe-name">
-                    <label for="difficulty">Difficulty</label> 
-                    <select name="difficulty" id="difficulty">
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
-                    </select>
-                    <label for="duration">Duration</label> <input type="text" id="duration">
-                </fieldset>
-
-                <fieldset class="fieldset">
-                    <legend>Instructions</legend>
-                    <div id="instructions">
-                        <div id="instruction1">
-                            <img id="add-instruction" src="/icons/add.png" width="25" height="25" onclick="addRecipe()">
-                                test test test test tes test     
-                            </div>
-                        
-                    </div>
-                </fieldset>
-
-
-            </div>
-            <div class="recipe">
-                <div class="recipe-details">
-                    <div class="recipe-title">
-                        Tomatoes and Eggs
-                    </div>
-
-                    <div class="recipe-time-difficulty">
-                        <div class="recipe-difficulty">
-                            Easy
-                        </div>
-
-                        <div class="recipe-time">
-                            30 min
-                        </div>
-                    </div>
-                </div>
-
-                <img class="recipe-image" src="TBD">
-
-            </div>
-
-            <div class="recipe">
-                <div class="recipe-details">
-                    <div class="recipe-title">
-                        Beef Chive Dumplings
-                    </div>
-
-                    <div class="recipe-time-difficulty">
-                        <div class="recipe-difficulty">
-                            Hard
-                        </div>
-
-                        <div class="recipe-time">
-                            3 hr
-                        </div>
-                    </div>
-                </div>
-                <img class="recipe-image" src="TBD">
-            </div>
-
-            <div class="recipe">
-                <div class="recipe-details">
-                    <div class="recipe-title">
-                        beef patty guide
-                    </div>
-
-                    <div class="recipe-time-difficulty">
-                        <div class="recipe-difficulty">
-                            Medium
-                        </div>
-
-                        <div class="recipe-time">
-                            20 min
-                        </div>
-                    </div>
-                </div>
-                <img class="recipe-image" src="TBD">
-            </div>
-
-            <div class="recipe">
-                <div class="recipe-details">
-                    <div class="recipe-title">
-                        Chicken Bake
-                    </div>
-
-                    <div class="recipe-time-difficulty">
-                        <div class="recipe-difficulty">
-                            Easy
-                        </div>
-
-                        <div class="recipe-time">
-                            1 hr
-                        </div>
-                    </div>
-                </div>
-                <img class="recipe-image" src="TBD">
-            </div>
+        <hr class="header-line" />
+        <div class="search-bar">
+          <img class="search-icon" src="/icons/search.png" />
+          Search...
+          <img class="filter-icon" src="/icons/filter.png" />
+          <hr class="search-line" />
         </div>
+      </div>
+      <!-- HEADER -->
+
+      <div class="recipe-scroll">
+        <img
+          id="add-recipe"
+          src="/icons/add.png"
+          width="50"
+          height="50"
+          onclick="addRecipe()"
+        />
+
+        <!-- add recipe form -->
+        <div id="add-form">
+          <h1>Add Recipe</h1>
+          <fieldset class="fieldset">
+            <legend>General</legend>
+            <label for="recipe-name">Recipe Name</label>
+            <input type="text" id="recipe-name" />
+            <label for="difficulty">Difficulty</label>
+            <select name="difficulty" id="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+            <label for="duration">Duration</label>
+            <input type="text" id="duration" />
+          </fieldset>
+
+          <fieldset class="fieldset">
+            <legend>Instructions</legend>
+
+            <div id="instructions">
+              <div id="instructions-list">
+                <!-- unit of instruction -->
+                <!-- <div class="instruction" id="instruction1">
+                  <div class="instruction-number">1.</div>
+                  <div class="instruction-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor
+                  </div>
+                  <img
+                    class="remove-instruction"
+                    src="icons/trash.png"
+                    width="20"
+                    height="20"
+                    onclick="removeInstruction()"
+                  />
+                </div> -->
+              </div>
+
+              <!-- bottom instruction unit, will always be here -->
+              <div id="add-instruction">
+                <img
+                  id="add-instruction-button"
+                  src="/icons/add.png"
+                  width="25"
+                  height="25"
+                  onclick="addInstruction()"
+                />
+                <input
+                  type="text"
+                  id="add-instruction-text"
+                  placeholder="Instruction here..."
+                  maxlength="100"
+                />
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="recipe">
+          <div class="recipe-details">
+            <div class="recipe-title">Tomatoes and Eggs</div>
+
+            <div class="recipe-time-difficulty">
+              <div class="recipe-difficulty">Easy</div>
+
+              <div class="recipe-time">30 min</div>
+            </div>
+          </div>
+
+          <img class="recipe-image" src="TBD" />
+        </div>
+
+        <div class="recipe">
+          <div class="recipe-details">
+            <div class="recipe-title">Beef Chive Dumplings</div>
+
+            <div class="recipe-time-difficulty">
+              <div class="recipe-difficulty">Hard</div>
+
+              <div class="recipe-time">3 hr</div>
+            </div>
+          </div>
+          <img class="recipe-image" src="TBD" />
+        </div>
+
+        <div class="recipe">
+          <div class="recipe-details">
+            <div class="recipe-title">beef patty guide</div>
+
+            <div class="recipe-time-difficulty">
+              <div class="recipe-difficulty">Medium</div>
+
+              <div class="recipe-time">20 min</div>
+            </div>
+          </div>
+          <img class="recipe-image" src="TBD" />
+        </div>
+
+        <div class="recipe">
+          <div class="recipe-details">
+            <div class="recipe-title">Chicken Bake</div>
+
+            <div class="recipe-time-difficulty">
+              <div class="recipe-difficulty">Easy</div>
+
+              <div class="recipe-time">1 hr</div>
+            </div>
+          </div>
+          <img class="recipe-image" src="TBD" />
+        </div>
+      </div>
     </div>
     <footer>
-        <button class="tablink" onclick="window.location.href='text.html'" id=" defaultOpen">
-            <img src="icons/settings.png" width="50" height="50">
-            <p1>Home</p1>
-        </button>
-        <button class="tablink" onclick="window.location.href='LR.html'">
-            <img src="icons/grocery.png" width="50" height="50">
-            <p1>Inventory</p1>
-        </button>
-        <button class="tablink" onclick="window.location.href='Grocery_tab.html'">
-            <img src="icons/recipe-book.png" width="50" height="50">
-            <p1>Groceries</p1>
-        </button>
-        <button class="tablink" onclick="window.location.href='Choices.html'">
-            <img src="icons/spatula.png" width="50" height="50">
-            <p1>Recipes</p1>
-        </button>
-        <!-- <button class="tablink" onclick="window.location.href='Profile.html'">
+      <button
+        class="tablink"
+        onclick="window.location.href = 'text.html'"
+        id=" defaultOpen"
+      >
+        <img src="icons/settings.png" width="50" height="50" />
+        <p1>Home</p1>
+      </button>
+      <button class="tablink" onclick="window.location.href = 'LR.html'">
+        <img src="icons/grocery.png" width="50" height="50" />
+        <p1>Inventory</p1>
+      </button>
+      <button
+        class="tablink"
+        onclick="window.location.href = 'Grocery_tab.html'"
+      >
+        <img src="icons/recipe-book.png" width="50" height="50" />
+        <p1>Groceries</p1>
+      </button>
+      <button class="tablink" onclick="window.location.href = 'Choices.html'">
+        <img src="icons/spatula.png" width="50" height="50" />
+        <p1>Recipes</p1>
+      </button>
+      <!-- <button class="tablink" onclick="window.location.href='Profile.html'">
             <img src="icons/user.png" width="50" height="50">
             <p1>Profile</p1>
         </button> -->
-
-
-
     </footer>
-
-
-</body>
-
+  </body>
 </html>

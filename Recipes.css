@@ -1,118 +1,160 @@
+body {
+  font-family: Overpass;
+}
+
 .recipes-top {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .recipes-header {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .header-line {
-    width: 100%;
-    margin: 0;
-    border-top: 5px solid black;
+  width: 100%;
+  margin: 0;
+  border-top: 5px solid black;
 }
 
 .title {
-    padding-left: 2rem;
-    align-items: center;
-    justify-content: center;
+  padding-left: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .settings {
-    margin-left:auto;
-    padding: 2rem;
+  margin-left: auto;
+  padding: 2rem;
 }
 
 .search-bar {
-    height: auto;
-    font-size: 1.5rem;
+  height: auto;
+  font-size: 1.5rem;
 }
 
 .search-line {
-    margin: 0;
-    border-top: 3px solid black;
+  margin: 0;
+  border-top: 3px solid black;
 }
 
 .recipe {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 2rem;
 }
 
 .recipe-title {
-    font-size: 1.75rem;
-
+  font-size: 1.75rem;
 }
 
 .recipe-time-difficulty {
-    display: flex;
-    font-size: 1.25rem;
-    flex-direction: row;
-    gap: 2rem;
+  display: flex;
+  font-size: 1.25rem;
+  flex-direction: row;
+  gap: 2rem;
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .recipe-scroll {
-    position: relative;
-    height: 860px;
-    overflow: scroll;
+  position: relative;
+  height: 860px;
+  overflow: scroll;
 }
 
 #add-button {
-    position:absolute;
-    bottom: 0;
-    right: 0;
-    padding: 2rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 2rem;
 }
 
 #add-form {
-    position: absolute;
-    margin: auto;
-    width: 500px;
-    height: 650px;
-    background-color: #FDF7F1;
-    inset: 0;
-    text-align: center;
-    border: 3px solid black;
+  position: absolute;
+  margin: auto;
+  width: 500px;
+  height: 650px;
+  background-color: #fdf7f1;
+  inset: 0;
+  text-align: center;
+  border: 3px solid black;
+  overflow: scroll;
 }
 
 .fieldset {
-    font-size: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    margin: 0 auto;
-    align-items: center;
-    /* justify-content: center; */
-    margin-bottom: 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 0 auto;
+  align-items: center;
+  /* justify-content: center; */
+  margin-bottom: 1rem;
 }
-
 
 #duration {
-    width: 100px;
+  width: 100px;
 }
 
-input, select {
-    height: 24px;  
-    font-size: 20px; 
-    margin-bottom: 8px;
+input,
+select {
+  height: 24px;
+  font-size: 20px;
 }
+
+/* instruction related stuff */
 
 #instructions {
-    /* justify-content: left; */
-    /* align-items: left; */
-    width: 400px;
-    font-size: 16px;
+  /*div*/
+  /* justify-content: left; */
+  /* align-items: left; */
+  width: 400px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-#instruction1 {
-    justify-content: center;
-    align-items: centers;
+#instructions-list {
+  /*list where all the instructions go*/
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#add-instruction {
+  /*add instruction div at the bottom*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-instruction-button {
+  padding-right: 10px;
+}
+
+#add-instruction-text {
+  height: 18px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.instruction {
+  /*actual unit of instruction to be added*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.instruction-number {
+  /*number label for each instruction*/
+  font-size: 20px;
 }
