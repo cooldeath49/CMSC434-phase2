@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Kompanion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="Grocery.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <script>
+
+
+        function addGroceryListPopup() {
+            //grocery add button is pressed
+            document.getElementById("grocery_list_form").style.display = "block";
+        }
+
+        function closeForm() {
+            //closes the grocery add button popup
+            document.getElementById("grocery_list_form").style.display = "none";
+        }
+
+        function add_item_buttonShow(title) {
+            document.getElementById("add_item " + title).style.display = "block";
+        }
+
+        // function add_item_buttonClose() {
+        //     document.getElementById("add_item_button").style.display = "block";
+        // }
+
+        function closeItemForm() {
+            document.getElementById("list_item_form").style.display = "none";
+        }
+
+        function addItemToGroceryList(event, title) {
+            event.preventDefault();
+            const itemName = document.getElementById("itemName").value;
+            let target_element = documen.getElementById("grocery-list " + title)
+            // localStorage.setItem("currList", JSON.stringify());
+            closeItemForm();
+            target_element.innerHTML += `
+            <ul>
+                <li>
+                    <h3>
+                        <input type="checkbox" id="${itemName}_checkbox">&nbsp;&nbsp;${itemName}
+                    </h3>
+                </li>
+            </ul>`;
+        }
+
+        function openAddForm(title) {
+            let item_form = document.getElementById("list_item_form")
+            item_form.style.display = "block";
+            item_form.innerHTML = `<div class="form-popup" id="list_item_form">
+           <form id="addItemForm" onsubmit="addItemToGroceryList(event, ${title})">
+               <h1>Add Item To ${title}</h1>
+
+
+               <label for="itemName"><b>Item Name:</b></label>
+               <input type="text" id="itemName" placeholder="Enter Item Name" name="itemName" required><br>
+
+
+               <button type="submit">Submit</button>
+               <button type="button" onclick="closeItemForm()">Close</button>
+           </form>
+       </div>`;
+
+
+
+        }
+
+        function addGroceryList(event) {
+            event.preventDefault(); //resets the form
+            const title = document.getElementById("title").value;
+            const date = document.getElementById("date").value;
+            const groceryList = {
+                title: title,
+                date: date,
+                items: []
+            };
+            localStorage.setItem("groceryLists", JSON.stringify(groceryList));
+            console.log(groceryList);
+            closeForm();
+
+            document.getElementById("grocery_lists").innerHTML += `
+            <div id="grocery ${title}">
+                <h2><u>${title} added on: ${date}</u></h2>
+                <div id="grocery-list ${title}">
+                </div>
+                <img id="add_item ${title}" src="/icons/add.png" width="25" height="25" onclick="openAddForm()">
+            </div> 
+            `;
+            add_item_buttonShow(title);
+            document.getElementById("form-container").reset();
+        }
+    </script>
+
+    <!-- sample grocery list div, tso be added everytime someone adds a new list -->
+    <!-- 
+    <div class="grocery ${x.title}">
+        <h2><u>${x.title} added on: ${x.date}</u></h2>
+        <div class="grocery-list ${x.title}"></div>
+    </div> 
+    
+    -->
+
+
+    <div class="device">
+        <div class="header">
+            <div class="header_logo">
+                <img src="/icons/leaves.png" width="50" height="50">
+                <h2>Groceries</h2>
+            </div>
+        </div>
+        <div class="body"> <!-- add button-->
+            <!-- goes to addgrocerylistpopup() -->
+            <img id="add_button" src="/icons/add.png" width="50" height="50" onclick="addGroceryListPopup()">
+        </div>
+
+
+        <div id="grocery_lists"></div>
+        <!-- <div id="item_lists"></div> -->
+        <!-- <img id="add_item_button" src="/icons/add.png" width="25" height="25" onclick="openAddForm()"> -->
+
+
+        <!-- popup form for when the add list button is pressed -->
+        <div class="form-popup" id="grocery_list_form">
+            <form class="form-container" id="form-container" onsubmit="addGroceryList(event)">
+                <h1>New List</h1>
+
+                <label for="title"><b>Title</b></label>
+                <input type="text" id="title" placeholder="Enter Title" name="title" required><br><br>
+
+                <label for="date"><b>Date</b></label>
+                <input type="date" id="date" placeholder="Enter Date" name="date" required><br><br>
+
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+
+        <!-- <div class="form-popup" id="list_item_form">
+            <form id="addItemForm" onsubmit="addItemToGroceryList(event)">
+                <h1>Add Item To </h1>
+
+                <label for="itemName"><b>Item Name:</b></label>
+                <input type="text" id="itemName" placeholder="Enter Item Name" name="itemName" required><br>
+
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeItemForm()">Close</button>
+            </form>
+        </div> -->
+
+
+
+    </div>
+    <!-- footer -->
+    <footer>
+        <button class="tablink active" onclick="window.location.href='Home.html'" id=" defaultOpen">
+            <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
+            <p1>Home</p1>
+        </button>
+        <button class="tablink" onclick="window.location.href='Inventory.html'">
+            <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
+            <p1>Inventory</p1>
+        </button>
+        <button class="tablink" onclick="window.location.href='Groceries.html'">
+            <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50">
+            <p1>Groceries</p1>
+        </button>
+        <button class="tablink" onclick="window.location.href='Recipes.html'">
+            <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
+            <p1>Recipes</p1>
+        </button>
+    </footer>
+</body>
+
+</html>
