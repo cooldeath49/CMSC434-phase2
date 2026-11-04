@@ -64,8 +64,9 @@ body {
 
 #recipe-scroll {
   position: relative;
-  height: 860px;
-  overflow: scroll;
+  height: 800px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #add-button {

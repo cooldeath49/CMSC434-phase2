@@ -2,11 +2,12 @@
     margin: auto;
     width: 640px;
     height: 960px;
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: #FDF7F1;
     position: relative;
     text-align: left;
 }
+
 
 h1 {
     color: #3A2C26;
