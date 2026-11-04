@@ -1,0 +1,334 @@
+/* Styles specific to Inventory.html. Shared styles live in global.css. */
+
+.InventoryScreen {
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.InventoryPanel {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 10px;
+    background-color: white;
+    overflow: hidden;
+}
+
+/* Title bar: "Inventory" + hamburger menu */
+.InventoryTitleBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+    border-bottom: 3px solid black;
+    background-color: #FDF7F1;
+}
+
+.InventoryTitleBar h1 {
+    margin: 10px 0;
+}
+
+.IconButton {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    color: #3A2C26;
+    font-size: 32px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.IconButton:hover,
+.IconButton.active {
+    background-color: #F9D2BA;
+}
+
+/* Search bar + sort/filter button */
+.SearchBar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-bottom: 3px solid black;
+    color: #665140;
+}
+
+.SearchBar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: Overpass;
+    font-size: 20px;
+    color: #3A2C26;
+    background: none;
+}
+
+.SearchBar .IconButton {
+    border-left: 2px dashed #665140;
+    border-radius: 0;
+    padding-left: 12px;
+}
+
+/* Dropdown menus (sort + hamburger) */
+.Popover {
+    position: absolute;
+    right: 12px;
+    z-index: 10;
+    min-width: 13rem;
+    background-color: #FDF7F1;
+    border: 3px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.Popover[hidden] {
+    display: none;
+}
+
+.Popover button {
+    width: auto;
+    text-align: left;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #3A2C26;
+    padding: 10px 14px;
+    font-family: Overpass;
+    font-size: 18px;
+    color: #3A2C26;
+    cursor: pointer;
+}
+
+.Popover button:last-child {
+    border-bottom: none;
+}
+
+.Popover button:hover {
+    background-color: #F9D2BA;
+}
+
+.Popover button.active {
+    font-weight: bold;
+    background-color: #F9D2BA;
+}
+
+.PopoverLabel {
+    margin: 0;
+    padding: 8px 14px 4px 14px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#menuPopover {
+    top: 62px;
+}
+
+#sortPopover {
+    top: 112px;
+}
+
+/* Banner shown while removing items */
+.RemoveBanner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: #3A2C26;
+}
+
+.RemoveBanner[hidden] {
+    display: none;
+}
+
+.RemoveBanner p {
+    margin: 0;
+    color: #FDF7F1;
+}
+
+/* Scrollable item list */
+.InventoryList {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.InventoryRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px 8px 32px;
+    border-bottom: 2px solid #3A2C26;
+    cursor: pointer;
+}
+
+.InventoryRow:hover,
+.InventoryRow:focus {
+    background-color: #FDF7F1;
+    outline: none;
+}
+
+.InventoryRow h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: normal;
+}
+
+.RowSub {
+    margin: 2px 0 0 0;
+    font-size: 15px;
+    display: flex;
+    gap: 14px;
+}
+
+.RowOwner {
+    color: #C0392B;
+}
+
+.RowRemove {
+    background-color: #3A2C26;
+    color: #FDF7F1;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.EmptyMessage {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Location tabs along the bottom */
+.LocationPills {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 10px;
+    border-top: 3px solid black;
+    background-color: #FDF7F1;
+}
+
+.LocationPill {
+    flex: 1;
+    border: 3px solid #3A2C26;
+    border-radius: 999px;
+    background-color: #F9D2BA;
+    color: #3A2C26;
+    font-family: Overpass;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 4px;
+    cursor: pointer;
+}
+
+.LocationPill.active {
+    background-color: #3A2C26;
+    color: #FDF7F1;
+}
+
+/* Buttons used in the banner and dialogs */
+.PrimaryButton,
+.SecondaryButton,
+.DangerButton {
+    font-family: Overpass;
+    font-size: 18px;
+    font-weight: bold;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 6px 14px;
+    cursor: pointer;
+}
+
+.PrimaryButton {
+    background-color: #F9D2BA;
+    color: #3A2C26;
+}
+
+.SecondaryButton {
+    background-color: white;
+    color: #3A2C26;
+}
+
+.DangerButton {
+    background-color: #3A2C26;
+    color: #FDF7F1;
+}
+
+/* Details and add dialogs */
+dialog {
+    width: 26rem;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: #FDF7F1;
+}
+
+dialog h1 {
+    margin-top: 0;
+}
+
+dialog fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+dialog fieldset[hidden] {
+    display: none;
+}
+
+dialog label {
+    display: block;
+    color: #3A2C26;
+    font-family: Overpass;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+dialog input[type="text"],
+dialog input[type="number"],
+dialog input[type="date"],
+dialog select,
+dialog textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Overpass;
+    font-size: 16px;
+    padding: 6px;
+    margin-top: 4px;
+}
+
+#detailsBody p {
+    margin: 6px 0;
+}
+
+.DialogButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+/* Footer has 4 tabs (Profile is hidden), so each takes a quarter of the bar */
+.tablink {
+    width: 25%;
+}
