@@ -33,7 +33,7 @@ function addRecipe() {
     let recipeScroll = document.getElementById("recipe-scroll");
 
     recipeScroll.innerHTML += `
-      <div class="recipe" id="${recipeName.value}">
+      <div class="recipe" id="${recipeName.value}" onclick="openRecipe(${recipeName.value})">
         <div class="recipe-details">
           <div class="recipe-title">${recipeName.value}</div>
 
