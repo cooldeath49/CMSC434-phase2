@@ -89,8 +89,8 @@ body {
 #add-form {
   position: absolute;
   margin: auto;
-  display: none;
   flex-direction: column;
+  display: none;
   width: 500px;
   height: fit-content;
   background-color: #fdf7f1;

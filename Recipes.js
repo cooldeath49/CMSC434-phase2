@@ -76,6 +76,11 @@ function addRecipe() {
     alert("Please provide " + alerts);
     return;
   } else {
+    console.log(localStorage.getItem(recipeName.value))
+    if (localStorage.getItem(recipeName.value)) {
+      alert("Recipe with this name already exists. Please choose another")
+      return
+    }
     let instructionsTable =
       JSON.parse(localStorage.getItem("temp-instructions")) ?? []; //storage for adding instructions
     let ingredientsTable =
@@ -254,4 +259,30 @@ function removeIngredient(index) {
 //upon the document loading, populate the webpage as needed
 document.addEventListener("DOMContentLoaded", () => {
   localStorage.setItem("recipe-count", "0");
+
+
+  // document.getElementById("recipe-scroll").innerHTML = "";
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i)
+    const arr = JSON.parse(localStorage.getItem(key))
+    if (key != "temp-instructions" && key != "temp-ingredients" && key != "recipe-count") {
+      document.getElementById("recipe-scroll").innerHTML += `
+    
+      <div class="recipe" id="${key}" onclick="openRecipeView('${key}')">
+        <div class="recipe-details">
+          <div class="recipe-title">${key}</div>
+
+          <div class="recipe-time-difficulty">
+            <div class="recipe-difficulty">${arr[0]}</div>
+            <div class="recipe-time">${arr[1]}</div>
+          </div>
+        </div>
+
+      </div>
+    
+    `
+    }
+  }
+
 });
