@@ -6,6 +6,57 @@ function closeRecipeForm() {
   document.getElementById("add-form").style.display = "none";
 }
 
+function openRecipeView(name) {
+  let item = localStorage.getItem(name);
+  console.log(name, item)
+  if (item) {
+    item = JSON.parse(item)
+    document.getElementById("difficulty-view").innerHTML = item[0]
+    document.getElementById("duration-view").innerHTML = item[1]
+
+    let ingredients = document.getElementById("view-ingredients")
+    ingredients.innerHTML = ""
+
+    for (const [ind, text] of item[2].entries()) {
+      ingredients.innerHTML += `
+      <div class="ingredient" id="ingredient${ind}">
+        <div class="ingredient-dash">- </div>
+        <div class="ingredient-text">
+            ${text}
+      </div>
+      `
+    }
+
+    let instructions = document.getElementById("view-instructions")
+    instructions.innerHTML = ""
+    for (const [ind, text] of item[3].entries()) {
+      instructions.innerHTML += `
+      <div class="instruction" >
+        <div class="instruction-number">${ind + 1}.</div>
+        <div class="instruction-text">
+          ${text}
+        </div>
+      </div>
+      `
+
+    }
+    document.getElementById("title").innerHTML = `<h1>${name}</h1>`
+    document.getElementById("view-recipe").style.display = "flex"
+
+    document.getElementById("view-buttons").innerHTML = `
+        <div class="button" id="delete-recipe" onclick="deleteRecipe('${name}')">Delete Recipe</div>
+        <div class="button" id="close-recipe" onclick="closeRecipeView()">Close</div>
+    
+    `
+
+
+  }
+}
+
+function closeRecipeView() {
+  document.getElementById("view-recipe").style.display = "none";
+}
+
 function addRecipe() {
   let alerts = "";
   let recipeName = document.getElementById("recipe-name");
@@ -29,11 +80,13 @@ function addRecipe() {
       JSON.parse(localStorage.getItem("temp-instructions")) ?? []; //storage for adding instructions
     let ingredientsTable =
       JSON.parse(localStorage.getItem("temp-ingredients")) ?? []; //storage for adding instructions
-    let recipe = [difficulty, duration, ingredientsTable, instructionsTable];
+    let recipe = [difficulty.value, duration.value, ingredientsTable, instructionsTable];
     let recipeScroll = document.getElementById("recipe-scroll");
 
+//recipe unit
     recipeScroll.innerHTML += `
-      <div class="recipe" id="${recipeName.value}" onclick="openRecipe(${recipeName.value})">
+    
+      <div class="recipe" id="${recipeName.value}" onclick="openRecipeView('${recipeName.value}')">
         <div class="recipe-details">
           <div class="recipe-title">${recipeName.value}</div>
 
@@ -47,7 +100,7 @@ function addRecipe() {
     
     `;
 
-    localStorage.setItem(recipeName, JSON.stringify(recipe)); //add recipe to localstorage
+    localStorage.setItem(recipeName.value, JSON.stringify(recipe)); //add recipe to localstorage
 
     localStorage.setItem(
       "recipe-count",
@@ -63,6 +116,16 @@ function addRecipe() {
     document.getElementById("add-form").style.display = "none";
     //increment the count
   }
+}
+
+function deleteRecipe(name) {
+  let item = document.getElementById(name);
+  if (item) {
+    item.remove();
+    localStorage.removeItem(name)
+  }
+
+  document.getElementById("view-recipe").style.display = "none";
 }
 
 function addInstruction() {

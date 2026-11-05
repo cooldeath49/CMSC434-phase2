@@ -71,16 +71,17 @@ body {
 
 #recipe-scroll {
   position: relative;
-  height: 800px;
+  /* height: 100%; 960px - 50 - 5 - 33 - 2.5 - 96 */
+  height: 777px;
   width: 100%;
   margin: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
 #add-button {
   position: absolute;
-  bottom: 0;
+  bottom: 114px;
   right: 0;
   padding: 2rem;
 }
@@ -97,15 +98,17 @@ body {
   text-align: center;
   align-items: center;
   border: 3px solid black;
-  overflow: scroll;
+  overflow: auto;
+  scrollbar-width: none;
   overflow-x: hidden;
-  padding-bottom: 20px;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 #view-recipe {
   position: absolute;
   margin: auto;
-  /* display: none; */
+  display: none;
   flex-direction: column;
   width: 500px;
   height: fit-content;
@@ -116,7 +119,18 @@ body {
   border: 3px solid black;
   overflow: scroll;
   overflow-x: hidden;
-  padding-bottom: 20px;
+  padding: 20px;
+  gap: 5px;
+  scrollbar-width: none;
+  border-radius: 20px;
+}
+
+#diff-dur {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: center;
+  gap: 20px;
+  font-size: 24px;
 }
 
 .fieldset {
@@ -167,13 +181,12 @@ select {
     color: #FDF7F1;
 } */
 
-#buttons {
+.buttons {
   display: flex;
   gap: 10px;
 }
 
-#submit-recipe,
-#close-recipe {
+.button {
   border: 3px solid #3a2c26;
   width: fit-content;
   padding: 5px;

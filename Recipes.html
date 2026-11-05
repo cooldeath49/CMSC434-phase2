@@ -1,159 +1,166 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kitchen Kompanion</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="global.css" />
-    <link rel="stylesheet" href="Recipes.css" />
-    <script src="Recipes.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <div class="device">
-      <!-- HEADER -->
-      <div class="recipes-header">
-        <div class="recipes-top">
-          <div class="title">
-            <h1>Recipes</h1>
-          </div>
-          <img class="logo" src="/icons/leaves.png" />
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kitchen Kompanion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="Recipes.css" />
+  <script src="Recipes.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+</head>
 
-        <hr class="header-line" />
-        <div class="search-bar">
-          <img class="search-icon" src="/icons/search.png" />
-          Search...
-          <img class="filter-icon" src="/icons/filter.png" />
-          <hr class="search-line" />
+<body>
+  <div class="device">
+    <!-- HEADER -->
+    <div class="recipes-header">
+      <div class="recipes-top">
+        <div class="title">
+          <h1>Recipes</h1>
         </div>
+        <img class="logo" src="/icons/leaves.png" />
       </div>
-      <!-- HEADER -->
 
-      <div id="recipe-scroll">
-        <img
-          id="add-button"
-          src="/icons/add.png"
-          width="50"
-          height="50"
-          onclick="openRecipeForm()"
-        />
-
-        <!-- add recipe form -->
-        <div id="add-form">
-          <h1>Add Recipe</h1>
-
-          <!-- general -->
-          <fieldset class="fieldset">
-            <legend>General</legend>
-            <label for="recipe-name">Recipe Name</label>
-            <input type="text" id="recipe-name" />
-            <label for="difficulty">Difficulty</label>
-            <select name="difficulty" id="difficulty" required>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
-            <label for="duration">Duration</label>
-            <input type="text" id="duration" />
-          </fieldset>
-
-          <!-- ingredients -->
-
-          <fieldset class="fieldset">
-            <legend>Ingredients</legend>
-
-            <div id="ingredients">
-              <div id="ingredients-list"></div>
-
-              <!-- bottom unit, will always be here -->
-              <div id="add-ingredient">
-                <img
-                  id="add-ingredient-button"
-                  src="/icons/add.png"
-                  width="25"
-                  height="25"
-                  onclick="addIngredient()"
-                />
-                <input
-                  type="text"
-                  id="add-ingredient-text"
-                  placeholder="Ingredients here..."
-                  maxlength="50"
-                />
-              </div>
-            </div>
-          </fieldset>
-
-          <!-- instructions -->
-          <fieldset class="fieldset">
-            <legend>Instructions</legend>
-
-            <div id="instructions">
-              <div id="instructions-list"></div>
-
-              <!-- bottom instruction unit, will always be here -->
-              <div id="add-instruction">
-                <img
-                  id="add-instruction-button"
-                  src="/icons/add.png"
-                  width="25"
-                  height="25"
-                  onclick="addInstruction()"
-                />
-                <input
-                  type="text"
-                  id="add-instruction-text"
-                  placeholder="Instruction here..."
-                  maxlength="100"
-                />
-              </div>
-            </div>
-          </fieldset>
-          <div id="buttons">
-            <submit id="submit-recipe" onclick="addRecipe()">Submit Recipe</submit>
-            <div id="close-recipe" onclick="closeRecipeForm()">Close</div>
-          </div>
-          
-        </div>
-
-        <div id="view-recipe">
-          <h1>Lorum Ipsum</h1>
-
-          
-          
-        </div>
-
-        <!-- recipe unit -->
-       
+      <hr class="header-line" />
+      <div class="search-bar">
+        <img class="search-icon" src="/icons/search.png" />
+        Search...
+        <img class="filter-icon" src="/icons/filter.png" />
+        <hr class="search-line" />
+      </div>
     </div>
+    <!-- HEADER -->
+    <div id="recipe-scroll">
+
+      <!-- add recipe form -->
+      <div id="add-form">
+        <h1>Add Recipe</h1>
+
+        <!-- general -->
+        <fieldset class="fieldset">
+          <legend>General</legend>
+          <label for="recipe-name">Recipe Name</label>
+          <input type="text" id="recipe-name" />
+          <label for="difficulty">Difficulty</label>
+          <select name="difficulty" id="difficulty">
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+          <label for="duration">Duration</label>
+          <input type="text" id="duration" />
+        </fieldset>
+
+        <!-- ingredients -->
+
+        <fieldset class="fieldset">
+          <legend>Ingredients</legend>
+
+          <div id="ingredients">
+            <div id="ingredients-list"></div>
+
+            <!-- bottom unit, will always be here -->
+            <div id="add-ingredient">
+              <img id="add-ingredient-button" src="/icons/add.png" width="25" height="25" onclick="addIngredient()" />
+              <input type="text" id="add-ingredient-text" placeholder="Ingredients here..." maxlength="50" />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- instructions -->
+        <fieldset class="fieldset">
+          <legend>Instructions</legend>
+
+          <div id="instructions">
+            <div id="instructions-list"></div>
+
+            <!-- bottom instruction unit, will always be here -->
+            <div id="add-instruction">
+              <img id="add-instruction-button" src="/icons/add.png" width="25" height="25" onclick="addInstruction()" />
+              <input type="text" id="add-instruction-text" placeholder="Instruction here..." maxlength="100" />
+            </div>
+          </div>
+        </fieldset>
+        <div class="buttons">
+          <submit class="button" id="submit-recipe" onclick="addRecipe()">Add Recipe</submit>
+          <div class="button" id="close-recipe" onclick="closeRecipeForm()">Close</div>
+        </div>
+
+      </div>
+
+      <div id="view-recipe">
+        <div id="title">
+          <h1>Lorum Ipsum</h1>
+        </div>
+        <div id="diff-dur">
+          <div id="difficulty-view">
+            Easy
+          </div>
+          <div id="duration-view">
+            2 hr
+          </div>
+        </div>
+        <h2>Ingredients</h2>
+        <div id="view-ingredients">
+          <div class="ingredient" id="ingredient1">
+            <div class="ingredient-dash">- </div>
+            <div class="ingredient-text">
+              <!-- Eggslet recipe = [difficulty, duration, ingredientsTable, instructionsTable] -->
+            </div>
+            
+          </div> 
+        
+        </div>
+        <h2>Instructions</h2>
+
+        <div id="view-instructions">
+          
+          <div class="instruction" >
+            <div class="instruction-number">1.</div>
+            <div class="instruction-text">
+              Add eggs into a bowl and beat.
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons" id="view-buttons">
+          <div class="button" id="delete-recipe" onclick="deleteRecipe()">Delete Recipe</div>
+          <div class="button" id="close-recipe" onclick="closeRecipeView()">Close</div>
+        </div>
+
+      </div>
+
+      <!-- recipe unit -->
+
+    </div>
+    <img id="add-button" src="/icons/add.png" width="50" height="50" onclick="openRecipeForm()" />
     <footer>
       <button class="tablink" onclick="window.location.href='Home.html'" id=" defaultOpen">
-            <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
-            <p1>Home</p1>
-        </button>
-        <button class="tablink" onclick="window.location.href='Inventory.html'">
-            <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
-            <p1>Inventory</p1>
-        </button>
-        <button class="tablink" onclick="window.location.href='Grocery_tab.html'">
-            <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50">
-            <p1>Groceries</p1>
-        </button>
-        <button class="tablink active" onclick="window.location.href='Recipes.html'">
-            <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
-            <p1>Recipes</p1>
-        </button>
+        <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
+        <p1>Home</p1>
+      </button>
+      <button class="tablink" onclick="window.location.href='Inventory.html'">
+        <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
+        <p1>Inventory</p1>
+      </button>
+      <button class="tablink" onclick="window.location.href='Grocery_tab.html'">
+        <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50">
+        <p1>Groceries</p1>
+      </button>
+      <button class="tablink active" onclick="window.location.href='Recipes.html'">
+        <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
+        <p1>Recipes</p1>
+      </button>
       <!-- <button class="tablink" onclick="window.location.href='Profile.html'">
             <img src="icons/user.png" width="50" height="50">
             <p1>Profile</p1>
         </button> -->
     </footer>
-  </body>
+</body>
+
 </html>
