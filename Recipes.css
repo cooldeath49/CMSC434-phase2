@@ -18,25 +18,48 @@ body {
   border-top: 5px solid black;
 }
 
-.title {
-  padding-left: 2rem;
+#page-title {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
   align-items: center;
   justify-content: center;
 }
 
-.settings {
-  margin-left: auto;
-  padding: 2rem;
-}
 
 .search-bar {
+  display: flex;
+  align-items: center;
   height: auto;
-  font-size: 1.5rem;
+  font-size: 20px;
 }
 
 .search-line {
   margin: 0;
   border-top: 3px solid black;
+}
+
+#search-input {
+  width: 100%;
+  border: none;
+  background-color: #fdf7f1;
+  border: none;
+  outline: none;
+  font-family: Overpass;
+  font-size: 20px;
+  color: #3A2C26;
+  background: none;
+}
+
+#filter-icon {
+  margin-left: auto;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+#filter-icon:hover {
+  background-color: #e6d9cd;
 }
 
 .recipe {
@@ -50,7 +73,7 @@ body {
 }
 
 .recipe:hover {
-    background-color: #e6d9cd;
+  background-color: #e6d9cd;
 }
 
 .recipe-title {
@@ -72,7 +95,8 @@ body {
 #recipe-scroll {
   position: relative;
   /* height: 100%; 960px - 50 - 5 - 33 - 2.5 - 96 */
-  height: 777px;
+  /* height: 777px; */
+  height: 753px;
   width: 100%;
   margin: 0;
   overflow-y: auto;
@@ -82,6 +106,7 @@ body {
 #add-button {
   position: absolute;
   bottom: 114px;
+  cursor: pointer;
   right: 0;
   padding: 2rem;
 }
@@ -94,6 +119,7 @@ body {
   width: 500px;
   height: fit-content;
   background-color: #fdf7f1;
+  z-index: 20;
   inset: 0;
   text-align: center;
   align-items: center;
@@ -113,6 +139,7 @@ body {
   width: 500px;
   height: fit-content;
   background-color: #fdf7f1;
+  z-index: 20;
   inset: 0;
   text-align: center;
   align-items: center;
@@ -126,8 +153,8 @@ body {
 }
 
 #diff-dur {
-  display: flex; 
-  flex-direction: row; 
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   gap: 20px;
   font-size: 24px;
@@ -153,6 +180,7 @@ select {
   height: 24px;
   font-size: 20px;
 }
+
 /* 
 .LocationPills {
     display: flex;
@@ -193,6 +221,7 @@ select {
   cursor: pointer;
   border-radius: 25px;
 }
+
 /* instruction/ingredient related stuff */
 
 #instructions,
