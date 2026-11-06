@@ -1,4 +1,4 @@
-// localStorage.clear();
+localStorage.clear();
 // Sample data, used the first time the page is opened. After that, profiles and
 // chores are saved in localStorage so they stick around between visits.
 const defaultProfiles = [
@@ -45,7 +45,7 @@ function makeElement(tag, className, text) {
 // Profiles
 function makeProfileCard(profile) {
     const card = makeElement("div", "profile_card");
-    card.appendChild(makeElement("div", "avatar", profile.name.charAt(0).toUpperCase()));
+    card.appendChild(makeElement("div", profile.name.charAt(0).toUpperCase()));
 
     const info = makeElement("div", "profile_info");
     const nameRow = makeElement("div", "profile_name_row");

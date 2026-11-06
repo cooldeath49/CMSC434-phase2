@@ -22,20 +22,6 @@
     padding: 12px 0;
 }
 
-.avatar {
-    flex: none;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background-color: #3A2C26;
-    color: #FFFFFF;
-    font-size: 24px;
-    font-weight: 900;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .profile_info {
     flex: 1;
     display: flex;
