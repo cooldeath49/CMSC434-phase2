@@ -1,7 +1,14 @@
 let searchInput = document.getElementById("search-input");
+let azElement = document.getElementById("sort-az");
+let zaElement = document.getElementById("sort-za");
+// let shortestElement = document.getElementById("sort-time-shortest");
+// let longestElement = document.getElementById("sort-time-longest");
 let tempIngredients = [];
+let filterIngredients = [];
 let tempInstructions = [];
-
+let filterOpen = false;
+let currSort = "az";
+let difficultyFilter = null;
 function openRecipeForm() {
   document.getElementById("add-form").style.display = "flex";
 }
@@ -12,7 +19,6 @@ function closeRecipeForm() {
 
 function openRecipeView(name) {
   let item = localStorage.getItem(name);
-  console.log(name, item);
   if (item) {
     item = JSON.parse(item);
     document.getElementById("difficulty-view").innerHTML = item[0];
@@ -228,7 +234,195 @@ function removeIngredient(index) {
 }
 
 function renderList() {
-  let val = searchInput.value.trim();
+  // Need to: get search criteria
+  // if search criteria empty, get everything and render it
+  // if search criteria, search through all recipes and only include
+  // those that fit the search criteria. maybe this can be a function or smth
+  // need a search algorithm
+  // if no matches, display a message or something
+  let val = searchInput.value.trim().toLowerCase();
+  let recipeScroll = document.getElementById("recipe-scroll");
+
+  // returns a lowercased table of all keys in the localstorage, including the initialized value which has to be pruned
+  let allRecipes = Object.keys(localStorage);
+  // list of recipes that fit the search criteria
+  let validRecipes = [];
+
+  for (let key of allRecipes) {
+    if (key.toLowerCase().includes(val) && key != "initialized") {
+      validRecipes.push(key);
+    }
+  }
+
+  if (currSort == "az") {
+    validRecipes.sort((a, b) => a.localeCompare(b));
+  } else if (currSort == "za") {
+    validRecipes.sort((a, b) => b.localeCompare(a));
+  }
+
+  if (difficultyFilter) {
+    validRecipes = validRecipes.filter((key) => {
+      let recipe = JSON.parse(localStorage.getItem(key));
+      return recipe[0].toLowerCase() == difficultyFilter;
+    });
+  }
+
+  if (filterIngredients.length > 0) {
+    validRecipes = validRecipes.filter((key) => {
+      let recipe = JSON.parse(localStorage.getItem(key));
+      let ingredients = recipe[3];
+      let found = false;
+      for (let str of ingredients) {
+        for (let filtered of filterIngredients) {
+          if (str.toLowerCase().includes(filtered)) {
+            found = true;
+            break;
+          }
+        }
+      }
+      return found;
+    });
+  }
+
+  recipeScroll.innerHTML = "";
+
+  if (validRecipes.length == 0) {
+    recipeScroll.innerHTML += `
+    <div id="no-match">
+    No matches in your recipe book.
+    </div>
+    `;
+  } else {
+    for (let key of validRecipes) {
+      let arr = JSON.parse(localStorage.getItem(key));
+      recipeScroll.innerHTML += `
+    
+      <div class="recipe" id="${key}" onclick="openRecipeView('${key}')">
+        <div class="recipe-details">
+          <div class="recipe-title">${key}</div>
+
+          <div class="recipe-time-difficulty">
+            <div class="recipe-difficulty">${arr[0]}</div>
+            <div class="recipe-time">${arr[1]}</div>
+          </div>
+        </div>
+
+      </div>
+    
+    `;
+    }
+  }
+}
+
+function toggleFilter() {
+  if (!filterOpen) {
+    document.getElementById("view-filters").style.display = "flex";
+    filterOpen = true;
+  } else {
+    document.getElementById("view-filters").style.display = "none";
+    filterOpen = false;
+  }
+}
+
+function togglePill(parameter, state) {
+  let element = null;
+  if (parameter == "difficulty") {
+    element = document.getElementById("filter-difficulty");
+  } else if (parameter == "ingredients") {
+    element = document.getElementById("filter-ingredients");
+  }
+
+  if (state == "open") {
+    element.style.display = "flex";
+  } else if (state == "close") {
+    element.style.display = "none";
+  }
+}
+
+function toggleDifficulty(parameter) {
+  let easyPill = document.getElementById("easy-pill");
+  let medPill = document.getElementById("medium-pill");
+  let hardPill = document.getElementById("hard-pill");
+
+  easyPill.classList.remove("active");
+  medPill.classList.remove("active");
+  hardPill.classList.remove("active");
+
+  if (!difficultyFilter || difficultyFilter != parameter) {
+    if (parameter == "easy") {
+      easyPill.classList.add("active");
+    } else if (parameter == "medium") {
+      medPill.classList.add("active");
+    } else if (parameter == "hard") {
+      hardPill.classList.add("active");
+    }
+    difficultyFilter = parameter;
+    document.getElementById("difficulty-pill").classList.add("active");
+  } else {
+    difficultyFilter = null;
+    document.getElementById("difficulty-pill").classList.remove("active");
+  }
+  renderList();
+}
+
+function toggleSort(parameter) {
+  azElement.classList.remove("active");
+  zaElement.classList.remove("active");
+  // shortestElement.classList.remove("active");
+  // longestElement.classList.remove("active");
+
+  currSort = parameter;
+  if (parameter == "az") {
+    azElement.classList.add("active");
+  } else if (parameter == "za") {
+    zaElement.classList.add("active");
+    // } else if (parameter == "shortest") {
+    // shortestElement.classList.add("active");
+    // } else if (parameter == "longest") {
+    // longestElement.classList.add("active");
+  }
+  renderList();
+}
+
+function addIngredientToFilter() {
+  let text = document.getElementById("filter-ingredient-text");
+  // there is input
+  if (text.value.length > 0) {
+    let listElement = document.getElementById("filter-ingredient-list"); //actual element for storing it
+
+    filterIngredients.push(text.value);
+
+    listElement.innerHTML += `
+      <div class="ingredient" id="filterIngredient${tempIngredients.length}">
+       <div class="ingredient-dash">- </div>
+          <div class="ingredient-text">
+              ${text.value}
+          </div>
+          <img
+            class="remove-ingredient"
+            src="icons/trash.png"
+            width="20"
+            height="20"
+            onclick="removeIngredientFromFilter(${tempIngredients.length})"
+          />
+      </div>
+    `;
+    text.value = "";
+    document.getElementById("ingredients-pill").classList.add("active");
+    renderList();
+  } else {
+    alert("Please enter an ingredient");
+  }
+}
+
+function removeIngredientFromFilter(index) {
+  filterIngredients.splice(index, 1);
+  let element = document.getElementById("filterIngredient" + index);
+  element.remove();
+  if (filterIngredients.length == 0) {
+    document.getElementById("ingredients-pill").classList.remove("active");
+  }
+  renderList();
 }
 
 //upon the document loading, populate the webpage as needed
@@ -473,29 +667,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("initialized", true);
   }
 
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    console.log(key);
-    console.log(localStorage.getItem(key));
-    const arr = JSON.parse(localStorage.getItem(key));
-    if (key != "initialized") {
-      document.getElementById("recipe-scroll").innerHTML += `
-    
-      <div class="recipe" id="${key}" onclick="openRecipeView('${key}')">
-        <div class="recipe-details">
-          <div class="recipe-title">${key}</div>
-
-          <div class="recipe-time-difficulty">
-            <div class="recipe-difficulty">${arr[0]}</div>
-            <div class="recipe-time">${arr[1]}</div>
-          </div>
-        </div>
-
-      </div>
-    
-    `;
-    }
-  }
+  renderList();
 });
 
 searchInput.addEventListener("input", renderList);

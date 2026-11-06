@@ -30,7 +30,7 @@
       <div class="search-bar">
         <img class="search-icon" src="/icons/search.png" width="25" height="25"/>
         <input type="text" id="search-input" placeholder="Search...">
-        <img id="filter-icon" src="/icons/filter.png" width="25" height="25" />
+        <img id="filter-icon" src="/icons/filter.png" width="25" height="25" onclick="toggleFilter()"/>
       </div>
         <hr class="search-line" />
     </div>
@@ -91,6 +91,47 @@
 
       </div>
 
+      <div id="view-filters">
+        <h1>Sort By</h1>
+        <div class="buttons sort-buttons">
+          <div class="button active" id="sort-az" onclick="toggleSort('az')">
+            A-Z
+          </div>
+          <div class="button" id="sort-za" onclick="toggleSort('za')">
+            Z-A
+          </div>
+          <!--<div class="button" id="sort-time-shortest" onclick="toggleSort('shortest')">
+            Shortest-Longest
+          </div>
+          <div class="button" id="sort-time-longest" onclick="toggleSort('longest')">
+            Longest-Shortest
+          </div>-->
+        </div>
+      
+      </div>
+
+      <div class="filter-attribute" id="filter-difficulty">
+        <h1>Difficulty</h1>
+        <div class="buttons">
+          <div class="button" id="easy-pill" onClick="toggleDifficulty('easy')">Easy</div>
+          <div class="button" id="medium-pill" onClick="toggleDifficulty('medium')">Medium</div>
+          <div class="button" id="hard-pill" onClick="toggleDifficulty('hard')">Hard</div>
+        </div>
+        <div class="button" onClick="togglePill('difficulty', 'close')">Close</div>
+      </div>
+
+      <div class="filter-attribute" id="filter-ingredients">
+        <h1>Ingredients</h1>
+        <div id="filter-ingredient-list" style="display: flex; flex-direction: column">
+   
+          </div>
+        <div id="add-ingredient">
+          <img id="add-ingredient-button" src="/icons/add.png" width="25" height="25" onclick="addIngredientToFilter()" />
+          <input type="text" id="filter-ingredient-text" placeholder="Ingredient name..." maxlength="50" />
+        </div>
+        <div class="button" onClick="togglePill('ingredients', 'close')">Close</div>
+      </div>
+
       <div id="view-recipe">
         <div id="title">
           <h1>Lorum Ipsum</h1>
@@ -134,27 +175,18 @@
       </div>
 
     <div id="recipe-scroll">
+
       <!-- add recipe form -->
       <!-- recipe unit -->
 
     </div>
 
     <div id="pills-div">
-      <div class="pill">
+      <div class="pill" id="difficulty-pill" onclick="togglePill('difficulty', 'open')">
         Difficulty
       </div>
-      <div class="pill">
-        Duration
-      </div>
-      <div class="pill">
+      <div class="pill" id="ingredients-pill" onclick="togglePill('ingredients', 'open')">
         Ingredients
-      </div>
-      
-      <div class="pill">
-        Cuisine
-      </div>
-      <div class="pill">
-        Meal Type
       </div>
     </div>
 
