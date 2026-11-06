@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <title>My Household</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="MyHousehold.css">
+</head>
+
+<body>
+    <div class="device">
+        <div class="header">
+            <div class="header_logo">
+                <img class="header_logo" src="icons/leaves.svg" width="50" height="50">
+                <h1>My Household</h1>
+            </div>
+        </div>
+
+        <!-- Household Members -->
+        <div class="content profile_content">
+            <div class="widget">
+                <div class="widget_header">
+                    <h2>Household Members</h2>
+                    <button class="add_button" id="addProfileButton">+ Add</button>
+                </div>
+                <div id="profileList"></div>
+            </div>
+
+            <!-- Chores -->
+            <div class="widget">
+                <div class="widget_header">
+                    <h2>Chores</h2>
+                    <button class="add_button" id="addChoreButton">+ Add</button>
+                </div>
+                <div class="chore_filters">
+                    <button class="chore_filter active" data-category="All">All</button>
+                    <button class="chore_filter" data-category="Cleaning">Cleaning</button>
+                    <button class="chore_filter" data-category="Trash Duty">Trash Duty</button>
+                    <button class="chore_filter" data-category="Shopping">Shopping</button>
+                </div>
+                <div id="choreList"></div>
+            </div>
+        </div>
+
+        <!-- Adding or editing a Household Member -->
+        <dialog class="profile_dialog" id="profileDialog">
+            <form id="profileForm">
+                <h2 id="profileTitle">Add Household Members</h2>
+
+                <label class="form_label" for="profileName">Name</label>
+                <input class="form_input" type="text" id="profileName" maxlength="30" placeholder="Enter your name" required>
+
+                <span class="form_label">Cooking Skill</span>
+                <div class="pill_options">
+                    <label><input type="radio" name="skill" value="Beginner" checked><span>Beginner</span></label>
+                    <label><input type="radio" name="skill" value="Intermediate"><span>Intermediate</span></label>
+                    <label><input type="radio" name="skill" value="Advanced"><span>Advanced</span></label>
+                </div>
+
+                <span class="form_label">Allergies</span>
+                <div class="pill_options">
+                    <label><input type="checkbox" name="allergy" value="Peanuts"><span>Peanuts</span></label>
+                    <label><input type="checkbox" name="allergy" value="Tree Nuts"><span>Tree Nuts</span></label>
+                    <label><input type="checkbox" name="allergy" value="Dairy"><span>Dairy</span></label>
+                    <label><input type="checkbox" name="allergy" value="Eggs"><span>Eggs</span></label>
+                    <label><input type="checkbox" name="allergy" value="Gluten"><span>Gluten</span></label>
+                    <label><input type="checkbox" name="allergy" value="Soy"><span>Soy</span></label>
+                    <label><input type="checkbox" name="allergy" value="Fish"><span>Fish</span></label>
+                    <label><input type="checkbox" name="allergy" value="Shellfish"><span>Shellfish</span></label>
+                </div>
+                <input class="form_input" type="text" id="profileOtherAllergies" placeholder="Other (comma separated)">
+
+                <div class="form_buttons">
+                    <button type="submit" class="widget_button">Save</button>
+                    <button type="button" class="widget_button" id="profileCancel">Cancel</button>
+                </div>
+                <img class="Keyboard" src="icons/keyboard.png">
+            </form>
+        </dialog>
+
+        <!-- Adding a chore -->
+        <dialog class="profile_dialog" id="choreDialog">
+            <form id="choreForm">
+                <h2>Add Chore</h2>
+
+                <label class="form_label" for="choreName">Chore</label>
+                <input class="form_input" type="text" id="choreName" maxlength="40" placeholder="e.g. Mop kitchen floor" required>
+
+                <label class="form_label" for="choreCategory">Category</label>
+                <select class="form_input" id="choreCategory">
+                    <option>Cleaning</option>
+                    <option>Trash Duty</option>
+                    <option>Shopping</option>
+                </select>
+
+                <label class="form_label" for="choreAssignee">Assigned To</label>
+                <select class="form_input" id="choreAssignee"></select>
+
+                <label class="form_label" for="choreDay">Due</label>
+                <select class="form_input" id="choreDay">
+                    <option>Sun</option>
+                    <option>Mon</option>
+                    <option>Tue</option>
+                    <option>Wed</option>
+                    <option>Thu</option>
+                    <option>Fri</option>
+                    <option>Sat</option>
+                </select>
+
+                <div class="form_buttons">
+                    <button type="submit" class="widget_button">Save</button>
+                    <button type="button" class="widget_button" id="choreCancel">Cancel</button>
+                </div>
+                <img class="Keyboard" src="icons/keyboard.png">
+            </form>
+        </dialog>
+
+        <footer>
+            <button class="tablink" onclick="window.location.href='index.html'">
+                <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
+                <p1>Inventory</p1>
+            </button>
+            <button class="tablink" onclick="window.location.href='Grocery_tab.html'">
+                <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50">
+                <p1>Groceries</p1>
+            </button>
+            <button class="tablink" onclick="window.location.href='Recipes.html'">
+                <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
+                <p1>Recipes</p1>
+            </button>
+            <button class="tablink active" onclick="window.location.href='MyHousehold.html'" id=" defaultOpen">
+                <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
+                <p1>My Household</p1>
+            </button>
+        </footer>
+    </div>
+
+    <script src="MyHousehold.js"></script>
+</body>
+</html>
