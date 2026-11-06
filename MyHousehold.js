@@ -1,4 +1,4 @@
-localStorage.clear();
+// localStorage.clear();
 // Sample data, used the first time the page is opened. After that, profiles and
 // chores are saved in localStorage so they stick around between visits.
 const defaultProfiles = [
@@ -8,11 +8,11 @@ const defaultProfiles = [
 ];
 
 const defaultChores = [
-    { name: "Wipe counters", category: "Cleaning", assignee: "Carlo", day: "Mon", done: false },
-    { name: "Unload dishwasher", category: "Cleaning", assignee: "Arthur", day: "Mon", done: false },
-    { name: "Take out trash", category: "Trash Duty", assignee: "Nick", day: "Tue", done: false },
-    { name: "Take out recycling", category: "Trash Duty", assignee: "Arthur", day: "Thu", done: false },
-    { name: "Costco run", category: "Shopping", assignee: "Carlo", day: "Sat", done: false }
+    { name: "Wipe counters", category: "Cleaning", person: "Carlo", day: "Mon", done: false },
+    { name: "Unload dishwasher", category: "Cleaning", person: "Arthur", day: "Mon", done: false },
+    { name: "Take out trash", category: "Trash Duty", person: "Nick", day: "Tue", done: false },
+    { name: "Take out recycling", category: "Trash Duty", person: "Arthur", day: "Thu", done: false },
+    { name: "Costco run", category: "Shopping", person: "Carlo", day: "Sat", done: false }
 ];
 
 const CHORE_CATEGORIES = ["Cleaning", "Trash Duty", "Shopping"];
@@ -92,7 +92,7 @@ function removeProfile(profile) {
     profiles.splice(profiles.indexOf(profile), 1);
     // Their chores stay on the list but no longer belong to anyone
     for (const chore of chores) {
-        if (chore.assignee === profile.name) chore.assignee = "Unassigned";
+        if (chore.person === profile.name) chore.person = "Unassigned";
     }
     saveData();
     renderProfiles();
@@ -147,7 +147,7 @@ profileForm.addEventListener("submit", function (event) {
     if (editingProfile) {
         // Keep chore assignments in sync if the name changed
         for (const chore of chores) {
-            if (chore.assignee === editingProfile.name) chore.assignee = name;
+            if (chore.person === editingProfile.name) chore.person = name;
         }
         Object.assign(editingProfile, profile);
     } else {
@@ -174,7 +174,7 @@ function makeChoreRow(chore) {
     row.appendChild(checkbox);
 
     const text = makeElement("span", "chore_text", chore.name);
-    text.appendChild(makeElement("span", "chore_meta", chore.assignee + "  ·  Due " + chore.day));
+    text.appendChild(makeElement("span", "chore_meta", chore.person + "  ·  Due " + chore.day));
     row.appendChild(text);
 
     const removeButton = makeElement("button", "remove_chore", "✕");
@@ -221,12 +221,12 @@ function openChoreDialog() {
     if (selectedCategory !== "All") {
         document.getElementById("choreCategory").value = selectedCategory;
     }
-    const assigneeSelect = document.getElementById("choreAssignee");
-    assigneeSelect.innerHTML = "";
+    const personSelect = document.getElementById("chorePerson");
+    personSelect.innerHTML = "";
     for (const profile of profiles) {
-        assigneeSelect.appendChild(makeElement("option", null, profile.name));
+        personSelect.appendChild(makeElement("option", null, profile.name));
     }
-    assigneeSelect.appendChild(makeElement("option", null, "Unassigned"));
+    personSelect.appendChild(makeElement("option", null, "Unassigned"));
     choreDialog.showModal();
 }
 
@@ -240,7 +240,7 @@ choreForm.addEventListener("submit", function (event) {
     chores.push({
         name: name,
         category: document.getElementById("choreCategory").value,
-        assignee: document.getElementById("choreAssignee").value,
+        person: document.getElementById("chorePerson").value,
         day: document.getElementById("choreDay").value,
         done: false
     });

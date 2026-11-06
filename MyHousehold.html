@@ -45,77 +45,88 @@
         </div>
 
         <!-- Adding or editing a Household Member -->
-        <dialog class="profile_dialog" id="profileDialog">
+        <dialog class="household_dialog" id="profileDialog">
             <form id="profileForm">
-                <h2 id="profileTitle">Add Household Members</h2>
+                <h1 id="profileTitle">Add Member</h1>
 
-                <label class="form_label" for="profileName">Name</label>
-                <input class="form_input" type="text" id="profileName" maxlength="30" required>
+                <fieldset>
+                    <legend>General</legend>
+                    <label for="profileName">Name</label>
+                    <input type="text" id="profileName" maxlength="30" required>
 
-                <span class="form_label">Cooking Skill</span>
-                <div class="pill_options">
-                    <label><input type="radio" name="skill" value="Beginner" checked><span>Beginner</span></label>
-                    <label><input type="radio" name="skill" value="Intermediate"><span>Intermediate</span></label>
-                    <label><input type="radio" name="skill" value="Advanced"><span>Advanced</span></label>
+                    <label for="profileSkill">Cooking Skill</label>
+                    <select id="profileSkill">
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Allergies</legend>
+                    <div class="allergy_options">
+                        <label><input type="checkbox" name="allergy" value="Peanuts"> Peanuts</label>
+                        <label><input type="checkbox" name="allergy" value="Tree Nuts"> Tree Nuts</label>
+                        <label><input type="checkbox" name="allergy" value="Dairy"> Dairy</label>
+                        <label><input type="checkbox" name="allergy" value="Eggs"> Eggs</label>
+                        <label><input type="checkbox" name="allergy" value="Gluten"> Gluten</label>
+                        <label><input type="checkbox" name="allergy" value="Soy"> Soy</label>
+                        <label><input type="checkbox" name="allergy" value="Fish"> Fish</label>
+                        <label><input type="checkbox" name="allergy" value="Shellfish"> Shellfish</label>
+                    </div>
+                    <label for="profileOtherAllergies">Other</label>
+                    <input type="text" id="profileOtherAllergies" placeholder="e.g. Kiwi, Sesame">
+                </fieldset>
+
+                <div class="dialog_buttons">
+                    <button type="submit">Save</button>
+                    <button type="button" id="profileCancel">Cancel</button>
                 </div>
-
-                <span class="form_label">Allergies</span>
-                <div class="pill_options">
-                    <label><input type="checkbox" name="allergy" value="Peanuts"><span>Peanuts</span></label>
-                    <label><input type="checkbox" name="allergy" value="Tree Nuts"><span>Tree Nuts</span></label>
-                    <label><input type="checkbox" name="allergy" value="Dairy"><span>Dairy</span></label>
-                    <label><input type="checkbox" name="allergy" value="Eggs"><span>Eggs</span></label>
-                    <label><input type="checkbox" name="allergy" value="Gluten"><span>Gluten</span></label>
-                    <label><input type="checkbox" name="allergy" value="Soy"><span>Soy</span></label>
-                    <label><input type="checkbox" name="allergy" value="Fish"><span>Fish</span></label>
-                    <label><input type="checkbox" name="allergy" value="Shellfish"><span>Shellfish</span></label>
-                </div>
-                <input class="form_input" type="text" id="profileOtherAllergies" placeholder="Other allergies (comma separated)">
-
-                <div class="form_buttons">
-                    <button type="submit" class="widget_button">Save</button>
-                    <button type="button" class="widget_button" id="profileCancel">Cancel</button>
-                </div>
-                <img class="Keyboard" src="icons/keyboard.png">
             </form>
         </dialog>
 
         <!-- Adding a chore -->
-        <dialog class="profile_dialog" id="choreDialog">
+        <dialog class="household_dialog" id="choreDialog">
             <form id="choreForm">
-                <h2>Add Chore</h2>
+                <h1>Add Chore</h1>
 
-                <label class="form_label" for="choreName">Chore</label>
-                <input class="form_input" type="text" id="choreName" maxlength="40" required>
+                <fieldset>
+                    <legend>General</legend>
+                    <label for="choreName">Chore</label>
+                    <input type="text" id="choreName" maxlength="40" required>
 
-                <label class="form_label" for="choreCategory">Category</label>
-                <select class="form_input" id="choreCategory">
-                    <option>Cleaning</option>
-                    <option>Trash Duty</option>
-                    <option>Shopping</option>
-                </select>
+                    <label for="choreCategory">Category</label>
+                    <select id="choreCategory">
+                        <option>Cleaning</option>
+                        <option>Trash Duty</option>
+                        <option>Shopping</option>
+                    </select>
+                </fieldset>
 
-                <label class="form_label" for="choreAssignee">Assigned To</label>
-                <select class="form_input" id="choreAssignee"></select>
+                <fieldset>
+                    <legend>Schedule</legend>
+                    <label for="chorePerson">Assigned To</label>
+                    <select id="chorePerson"></select>
 
-                <label class="form_label" for="choreDay">Due</label>
-                <select class="form_input" id="choreDay">
-                    <option>Sun</option>
-                    <option>Mon</option>
-                    <option>Tue</option>
-                    <option>Wed</option>
-                    <option>Thu</option>
-                    <option>Fri</option>
-                    <option>Sat</option>
-                </select>
+                    <label for="choreDay">Due</label>
+                    <select id="choreDay">
+                        <option>Sun</option>
+                        <option>Mon</option>
+                        <option>Tue</option>
+                        <option>Wed</option>
+                        <option>Thu</option>
+                        <option>Fri</option>
+                        <option>Sat</option>
+                    </select>
+                </fieldset>
 
-                <div class="form_buttons">
-                    <button type="submit" class="widget_button">Save</button>
-                    <button type="button" class="widget_button" id="choreCancel">Cancel</button>
+                <div class="dialog_buttons">
+                    <button type="submit">Save</button>
+                    <button type="button" id="choreCancel">Cancel</button>
                 </div>
-                <img class="Keyboard" src="icons/keyboard.png">
             </form>
         </dialog>
+
 
         <footer>
             <button class="tablink" onclick="window.location.href='index.html'">
@@ -135,6 +146,8 @@
                 <p1>My Household</p1>
             </button>
         </footer>
+
+        <img class="Keyboard" src="icons/keyboard.png">
     </div>
 
     <script src="MyHousehold.js"></script>
