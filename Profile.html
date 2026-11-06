@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Kitchen Kompanion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="Profile.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="device">
+        <div class="header">
+            <div class="header_logo">
+                <img class="header_logo" src="icons/leaves.svg" width="50" height="50">
+                <h1>Profile</h1>
+            </div>
+            <button class="hamburger_menu">≡</button>
+        </div>
+        <p>Household members and shared chores</p>
+
+        <div class="content profile_content">
+            <!-- Profiles -->
+            <div class="widget">
+                <div class="widget_header">
+                    <h2>Household Profiles</h2>
+                    <button class="add_button" id="addProfileButton">+ Add</button>
+                </div>
+                <div id="profileList"></div>
+            </div>
+
+            <!-- Chores -->
+            <div class="widget">
+                <div class="widget_header">
+                    <h2>Chores</h2>
+                    <button class="add_button" id="addChoreButton">+ Add</button>
+                </div>
+                <div class="chore_filters">
+                    <button class="chore_filter active" data-category="All">All</button>
+                    <button class="chore_filter" data-category="Cleaning">Cleaning</button>
+                    <button class="chore_filter" data-category="Trash Duty">Trash Duty</button>
+                    <button class="chore_filter" data-category="Shopping">Shopping</button>
+                </div>
+                <div id="choreList"></div>
+            </div>
+        </div>
+
+        <!-- Adding or editing a profile -->
+        <dialog class="profile_dialog" id="profileDialog">
+            <form id="profileForm">
+                <h2 id="profileTitle">Add Profile</h2>
+
+                <label class="form_label" for="profileName">Name</label>
+                <input class="form_input" type="text" id="profileName" maxlength="30" placeholder="Enter your name" required>
+
+                <span class="form_label">Cooking Skill</span>
+                <div class="pill_options">
+                    <label><input type="radio" name="skill" value="Beginner" checked><span>Beginner</span></label>
+                    <label><input type="radio" name="skill" value="Intermediate"><span>Intermediate</span></label>
+                    <label><input type="radio" name="skill" value="Advanced"><span>Advanced</span></label>
+                </div>
+
+                <span class="form_label">Allergies</span>
+                <div class="pill_options">
+                    <label><input type="checkbox" name="allergy" value="Peanuts"><span>Peanuts</span></label>
+                    <label><input type="checkbox" name="allergy" value="Tree Nuts"><span>Tree Nuts</span></label>
+                    <label><input type="checkbox" name="allergy" value="Dairy"><span>Dairy</span></label>
+                    <label><input type="checkbox" name="allergy" value="Eggs"><span>Eggs</span></label>
+                    <label><input type="checkbox" name="allergy" value="Gluten"><span>Gluten</span></label>
+                    <label><input type="checkbox" name="allergy" value="Soy"><span>Soy</span></label>
+                    <label><input type="checkbox" name="allergy" value="Fish"><span>Fish</span></label>
+                    <label><input type="checkbox" name="allergy" value="Shellfish"><span>Shellfish</span></label>
+                </div>
+                <input class="form_input" type="text" id="profileOtherAllergies" placeholder="Other (comma separated)">
+
+                <div class="form_buttons">
+                    <button type="submit" class="widget_button">Save</button>
+                    <button type="button" class="widget_button" id="profileCancel">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+
+        <!-- Adding a chore -->
+        <dialog class="profile_dialog" id="choreDialog">
+            <form id="choreForm">
+                <h2>Add Chore</h2>
+
+                <label class="form_label" for="choreName">Chore</label>
+                <input class="form_input" type="text" id="choreName" maxlength="40" placeholder="e.g. Mop kitchen floor" required>
+
+                <label class="form_label" for="choreCategory">Category</label>
+                <select class="form_input" id="choreCategory">
+                    <option>Cleaning</option>
+                    <option>Trash Duty</option>
+                    <option>Shopping</option>
+                </select>
+
+                <label class="form_label" for="choreAssignee">Assigned To</label>
+                <select class="form_input" id="choreAssignee"></select>
+
+                <label class="form_label" for="choreDay">Due</label>
+                <select class="form_input" id="choreDay">
+                    <option>Sun</option>
+                    <option>Mon</option>
+                    <option>Tue</option>
+                    <option>Wed</option>
+                    <option>Thu</option>
+                    <option>Fri</option>
+                    <option>Sat</option>
+                </select>
+
+                <div class="form_buttons">
+                    <button type="submit" class="widget_button">Save</button>
+                    <button type="button" class="widget_button" id="choreCancel">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+
+        <footer>
+            <button class="tablink" onclick="window.location.href='Home.html'" id=" defaultOpen">
+                <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
+                <p1>Home</p1>
+            </button>
+            <button class="tablink" onclick="window.location.href='Inventory.html'">
+                <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
+                <p1>Inventory</p1>
+            </button>
+            <button class="tablink" onclick="window.location.href='Grocery_tab.html'">
+                <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50">
+                <p1>Groceries</p1>
+            </button>
+            <button class="tablink" onclick="window.location.href='Recipes.html'">
+                <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
+                <p1>Recipes</p1>
+            </button>
+            <button class="tablink active" onclick="window.location.href='Profile.html'">
+                <img class="tablink_icon" src="icons/profile.svg" width="50" height="50">
+                <p1>Profile</p1>
+            </button>
+        </footer>
+    </div>
+
+    <script>
+        // Sample data, used the first time the page is opened. After that, profiles and
+        // chores are saved in localStorage so they stick around between visits.
+        const defaultProfiles = [
+            { name: "Daniel", skill: "Intermediate", allergies: ["Shellfish"] },
+            { name: "Arthur", skill: "Beginner", allergies: [] },
+            { name: "Nick", skill: "Advanced", allergies: ["Peanuts", "Dairy"] }
+        ];
+
+        const defaultChores = [
+            { name: "Wipe counters", category: "Cleaning", assignee: "Daniel", day: "Mon", done: false },
+            { name: "Unload dishwasher", category: "Cleaning", assignee: "Arthur", day: "Mon", done: false },
+            { name: "Take out trash", category: "Trash Duty", assignee: "Nick", day: "Tue", done: false },
+            { name: "Take out recycling", category: "Trash Duty", assignee: "Arthur", day: "Thu", done: false },
+            { name: "Costco run", category: "Shopping", assignee: "Daniel", day: "Sat", done: false }
+        ];
+
+        const CHORE_CATEGORIES = ["Cleaning", "Trash Duty", "Shopping"];
+
+        const profiles = JSON.parse(localStorage.getItem("profiles")) ?? defaultProfiles;
+        const chores = JSON.parse(localStorage.getItem("chores")) ?? defaultChores;
+
+        let selectedCategory = "All";
+        let editingProfile = null; // null when adding a new profile
+
+        const profileList = document.getElementById("profileList");
+        const choreList = document.getElementById("choreList");
+        const profileDialog = document.getElementById("profileDialog");
+        const profileForm = document.getElementById("profileForm");
+        const choreDialog = document.getElementById("choreDialog");
+        const choreForm = document.getElementById("choreForm");
+
+        function saveData() {
+            localStorage.setItem("profiles", JSON.stringify(profiles));
+            localStorage.setItem("chores", JSON.stringify(chores));
+        }
+
+        function makeElement(tag, className, text) {
+            const element = document.createElement(tag);
+            if (className) element.className = className;
+            if (text) element.textContent = text;
+            return element;
+        }
+
+        // Profiles
+        function makeProfileCard(profile) {
+            const card = makeElement("div", "profile_card");
+            card.appendChild(makeElement("div", "avatar", profile.name.charAt(0).toUpperCase()));
+
+            const info = makeElement("div", "profile_info");
+            const nameRow = makeElement("div", "profile_name_row");
+            nameRow.appendChild(makeElement("span", "task_title", profile.name));
+            nameRow.appendChild(makeElement("span", "skill_badge " + profile.skill, profile.skill));
+            info.appendChild(nameRow);
+
+            const allergyRow = makeElement("div", "chips");
+            allergyRow.appendChild(makeElement("span", "chips_label", "Allergies:"));
+            if (profile.allergies.length === 0) {
+                allergyRow.appendChild(makeElement("span", "chip none", "None"));
+            }
+            for (const allergy of profile.allergies) {
+                allergyRow.appendChild(makeElement("span", "chip", allergy));
+            }
+            info.appendChild(allergyRow);
+            card.appendChild(info);
+
+            const actions = makeElement("div", "card_actions");
+            const editButton = makeElement("button", "small_button", "Edit");
+            editButton.addEventListener("click", () => openProfileDialog(profile));
+            const removeButton = makeElement("button", "small_button", "Remove");
+            removeButton.addEventListener("click", () => removeProfile(profile));
+            actions.appendChild(editButton);
+            actions.appendChild(removeButton);
+            card.appendChild(actions);
+
+            return card;
+        }
+
+        function renderProfiles() {
+            profileList.innerHTML = "";
+            if (profiles.length === 0) {
+                profileList.appendChild(makeElement("p", "empty_note", "No profiles yet. Tap \"+ Add\" to create yours."));
+                return;
+            }
+            for (const profile of profiles) {
+                profileList.appendChild(makeProfileCard(profile));
+            }
+        }
+
+        function removeProfile(profile) {
+            if (!confirm("Remove " + profile.name + "'s profile?")) return;
+            profiles.splice(profiles.indexOf(profile), 1);
+            // Their chores stay on the list but no longer belong to anyone
+            for (const chore of chores) {
+                if (chore.assignee === profile.name) chore.assignee = "Unassigned";
+            }
+            saveData();
+            renderProfiles();
+            renderChores();
+        }
+
+        // Profile dialog
+        function openProfileDialog(profile) {
+            editingProfile = profile;
+            profileForm.reset();
+            document.getElementById("profileTitle").textContent = profile ? "Edit Profile" : "Add Profile";
+
+            if (profile) {
+                document.getElementById("profileName").value = profile.name;
+                profileForm.querySelector("input[name='skill'][value='" + profile.skill + "']").checked = true;
+
+                const allergyBoxes = [...profileForm.querySelectorAll("input[name='allergy']")];
+                const otherAllergies = [];
+                for (const allergy of profile.allergies) {
+                    const checkbox = allergyBoxes.find(b => b.value === allergy);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    } else {
+                        otherAllergies.push(allergy);
+                    }
+                }
+                document.getElementById("profileOtherAllergies").value = otherAllergies.join(", ");
+            }
+            profileDialog.showModal();
+        }
+
+        document.getElementById("addProfileButton").addEventListener("click", () => openProfileDialog(null));
+        document.getElementById("profileCancel").addEventListener("click", () => profileDialog.close());
+
+        profileForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const name = document.getElementById("profileName").value.trim();
+            if (!name) return;
+
+            const allergies = [];
+            profileForm.querySelectorAll("input[name='allergy']:checked").forEach(b => allergies.push(b.value));
+            for (const other of document.getElementById("profileOtherAllergies").value.split(",")) {
+                if (other.trim() && !allergies.includes(other.trim())) allergies.push(other.trim());
+            }
+
+            const profile = {
+                name: name,
+                skill: profileForm.querySelector("input[name='skill']:checked").value,
+                allergies: allergies
+            };
+
+            if (editingProfile) {
+                // Keep chore assignments in sync if the name changed
+                for (const chore of chores) {
+                    if (chore.assignee === editingProfile.name) chore.assignee = name;
+                }
+                Object.assign(editingProfile, profile);
+            } else {
+                profiles.push(profile);
+            }
+
+            saveData();
+            profileDialog.close();
+            renderProfiles();
+            renderChores();
+        });
+
+        // Chores
+        function makeChoreRow(chore) {
+            const row = makeElement("label", "chore");
+
+            const checkbox = makeElement("input");
+            checkbox.type = "checkbox";
+            checkbox.checked = chore.done;
+            checkbox.addEventListener("change", function () {
+                chore.done = checkbox.checked;
+                saveData();
+            });
+            row.appendChild(checkbox);
+
+            const text = makeElement("span", "chore_text", chore.name);
+            text.appendChild(makeElement("span", "chore_meta", chore.assignee + "  ·  Due " + chore.day));
+            row.appendChild(text);
+
+            const removeButton = makeElement("button", "remove_chore", "✕");
+            removeButton.setAttribute("aria-label", "Remove " + chore.name);
+            removeButton.addEventListener("click", function (event) {
+                event.preventDefault(); // don't also tick the checkbox
+                chores.splice(chores.indexOf(chore), 1);
+                saveData();
+                renderChores();
+            });
+            row.appendChild(removeButton);
+
+            return row;
+        }
+
+        function renderChores() {
+            choreList.innerHTML = "";
+            const categories = selectedCategory === "All" ? CHORE_CATEGORIES : [selectedCategory];
+            for (const category of categories) {
+                choreList.appendChild(makeElement("div", "chore_group_title", category));
+                const categoryChores = chores.filter(chore => chore.category === category);
+                if (categoryChores.length === 0) {
+                    choreList.appendChild(makeElement("p", "empty_note", "No " + category.toLowerCase() + " chores."));
+                }
+                for (const chore of categoryChores) {
+                    choreList.appendChild(makeChoreRow(chore));
+                }
+            }
+        }
+
+        // Category pills: show every category, or just one
+        document.querySelectorAll(".chore_filter").forEach(function (pill) {
+            pill.addEventListener("click", function () {
+                selectedCategory = pill.dataset.category;
+                document.querySelectorAll(".chore_filter").forEach(p =>
+                    p.classList.toggle("active", p === pill));
+                renderChores();
+            });
+        });
+
+        // Chore dialog
+        function openChoreDialog() {
+            choreForm.reset();
+            if (selectedCategory !== "All") {
+                document.getElementById("choreCategory").value = selectedCategory;
+            }
+            const assigneeSelect = document.getElementById("choreAssignee");
+            assigneeSelect.innerHTML = "";
+            for (const profile of profiles) {
+                assigneeSelect.appendChild(makeElement("option", null, profile.name));
+            }
+            assigneeSelect.appendChild(makeElement("option", null, "Unassigned"));
+            choreDialog.showModal();
+        }
+
+        document.getElementById("addChoreButton").addEventListener("click", openChoreDialog);
+        document.getElementById("choreCancel").addEventListener("click", () => choreDialog.close());
+
+        choreForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const name = document.getElementById("choreName").value.trim();
+            if (!name) return;
+            chores.push({
+                name: name,
+                category: document.getElementById("choreCategory").value,
+                assignee: document.getElementById("choreAssignee").value,
+                day: document.getElementById("choreDay").value,
+                done: false
+            });
+            saveData();
+            choreDialog.close();
+            renderChores();
+        });
+
+        renderProfiles();
+        renderChores();
+    </script>
+</body>
+</html>
