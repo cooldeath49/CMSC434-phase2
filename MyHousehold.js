@@ -1,9 +1,10 @@
+// localStorage.clear();
 // Sample data, used the first time the page is opened. After that, profiles and
 // chores are saved in localStorage so they stick around between visits.
 const defaultProfiles = [
-    { name: "Carlo", skill: "Cooking Skill: Intermediate", allergies: ["Shellfish"] },
-    { name: "Arthur", skill: "Cooking Skill: Beginner", allergies: [] },
-    { name: "Nick", skill: "Cooking Skill: Advanced", allergies: ["Peanuts", "Dairy"] }
+    { name: "Carlo", skill: "Intermediate", allergies: ["Shellfish"] },
+    { name: "Arthur", skill: "Beginner", allergies: [] },
+    { name: "Nick", skill: "Advanced", allergies: ["Peanuts", "Dairy"] }
 ];
 
 const defaultChores = [
