@@ -153,6 +153,18 @@
             </div>`;
             makeList(title);
         });
+
+        document.addEventListener("focusin", function (event) {
+            if (event.target.matches("input[type='text'], input[type='date'], textarea")) {
+                document.getElementById("keyboard").style.display = "block";
+            }
+        });
+
+        document.addEventListener("focusout", function (event) {
+            if (event.target.matches("input[type='text'], input[type='date'], textarea")) {
+                document.getElementById("keyboard").style.display = "none";
+            }
+        });
     </script>
 
     <!-- sample grocery list div, tso be added everytime someone adds a new list -->
@@ -232,7 +244,7 @@
                 <p1>Recipes</p1>
             </button>
         </footer>
-
+        <img id="keyboard" src="icons/keyboard.png" alt="Keyboard">
     </div>
 
 </body>
