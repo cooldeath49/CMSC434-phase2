@@ -1,404 +1,580 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventory</title>
-    <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="inventory.css">
-</head>
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="inventory.css" />
+  </head>
 
-
-<body>
+  <body>
     <div class="device">
-        <div class="InventoryScreen">
-            <div class="InventoryPanel">
-                <div class="InventoryTitleBar">
-                    <h1>Inventory</h1>
-                    <button class="IconButton" id="menuButton" aria-label="Menu">&#9776;</button>
-                </div>
+      <div class="InventoryScreen">
+        <div class="InventoryPanel">
+          <div class="InventoryTitleBar">
+            <h1>Inventory</h1>
+            <button class="IconButton" id="menuButton" aria-label="Menu">
+              &#9776;
+            </button>
+          </div>
 
-                <div class="SearchBar">
-                    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                        <circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="2.5" />
-                        <line x1="15" y1="15" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" />
-                    </svg>
-                    <input type="text" id="searchInput" placeholder="Search..." aria-label="Search inventory">
-                    <button class="IconButton" id="sortButton" aria-label="Sort">
-                        <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M3 4h18l-7 8v6l-4 2v-8z" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                </div>
+          <div class="SearchBar">
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <circle
+                cx="10"
+                cy="10"
+                r="7"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              />
+              <line
+                x1="15"
+                y1="15"
+                x2="21"
+                y2="21"
+                stroke="currentColor"
+                stroke-width="2.5"
+              />
+            </svg>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search..."
+              aria-label="Search inventory"
+            />
+            <button class="IconButton" id="sortButton" aria-label="Sort">
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 4h18l-7 8v6l-4 2v-8z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
 
-                <!-- Hamburger menu -->
-                <div class="Popover" id="menuPopover" hidden>
-                    <button id="menuAddItem">Add Item</button>
-                    <button id="menuAddAppliance">Add Appliance</button>
-                    <button id="menuRemove">Remove Items</button>
-                </div>
+          <!-- Hamburger menu -->
+          <div class="Popover" id="menuPopover" hidden>
+            <button id="menuAddItem">Add Item</button>
+            <button id="menuAddAppliance">Add Appliance</button>
+            <button id="menuRemove">Remove Items</button>
+          </div>
 
-                <!-- Sort menu (default A -> Z) -->
-                <div class="Popover" id="sortPopover" hidden>
-                    <p class="PopoverLabel">Sort by</p>
-                    <button data-sort="quantity">Quantity</button>
-                    <button data-sort="az" class="active">Alphabetical (A &rarr; Z)</button>
-                    <button data-sort="za">Alphabetical (Z &rarr; A)</button>
-                    <button data-sort="expiration">Priority (expiring soonest)</button>
-                </div>
+          <!-- Sort menu (default A -> Z) -->
+          <div class="Popover" id="sortPopover" hidden>
+            <p class="PopoverLabel">Sort by</p>
+            <button data-sort="quantity">Quantity</button>
+            <button data-sort="az" class="active">
+              Alphabetical (A &rarr; Z)
+            </button>
+            <button data-sort="za">Alphabetical (Z &rarr; A)</button>
+            <button data-sort="expiration">Priority (expiring soonest)</button>
+          </div>
 
-                <div class="RemoveBanner" id="removeBanner" hidden>
-                    <p>Tap &#10005; to remove an item</p>
-                    <button class="PrimaryButton" id="removeDone">Done</button>
-                </div>
+          <div class="RemoveBanner" id="removeBanner" hidden>
+            <p>Tap &#10005; to remove an item</p>
+            <button class="PrimaryButton" id="removeDone">Done</button>
+          </div>
 
-                <ul class="InventoryList" id="inventoryList"></ul>
+          <ul class="InventoryList" id="inventoryList"></ul>
 
-                <div class="LocationPills">
-                    <button class="LocationPill" data-location="Pantry">Pantry</button>
-                    <button class="LocationPill" data-location="Fridge">Fridge</button>
-                    <button class="LocationPill" data-location="Freezer">Freezer</button>
-                    <button class="LocationPill" data-location="Appliances">Appliances</button>
-                </div>
-            </div>
+          <div class="LocationPills">
+            <button class="LocationPill" data-location="Pantry">Pantry</button>
+            <button class="LocationPill" data-location="Fridge">Fridge</button>
+            <button class="LocationPill" data-location="Freezer">
+              Freezer
+            </button>
+            <button class="LocationPill" data-location="Appliances">
+              Appliances
+            </button>
+          </div>
         </div>
+      </div>
 
-        <!-- Tapping an item or appliance shows its details -->
-        <dialog id="detailsDialog">
-            <h1 id="detailsTitle"></h1>
-            <div id="detailsBody"></div>
-            <div class="DialogButtons">
-                <button class="DangerButton" id="detailsRemove">Remove</button>
-                <button class="SecondaryButton" id="detailsClose">Close</button>
-            </div>
-        </dialog>
+      <!-- Tapping an item or appliance shows its details -->
+      <dialog id="detailsDialog">
+        <h1 id="detailsTitle"></h1>
+        <div id="detailsBody"></div>
+        <div class="DialogButtons">
+          <button class="DangerButton" id="detailsRemove">Remove</button>
+          <button class="SecondaryButton" id="detailsClose">Close</button>
+        </div>
+      </dialog>
 
-        <!-- Adding an item or appliance -->
-        <dialog id="addDialog">
-            <form id="addForm">
-                <h1 id="addTitle">Add Item</h1>
-                <label for="addName">Name</label>
-                <input type="text" id="addName" required>
-                <label for="addQuantity">Quantity (optional)</label>
-                <input type="number" id="addQuantity" min="1">
+      <!-- Adding an item or appliance -->
+      <dialog id="addDialog">
+        <form id="addForm">
+          <h1 id="addTitle">Add Item</h1>
+          <label for="addName">Name</label>
+          <input type="text" id="addName" required />
+          <label for="addQuantity">Quantity (optional)</label>
+          <input type="number" id="addQuantity" min="1" />
 
-                <fieldset id="foodFields">
-                    <label for="addLocation">Location</label>
-                    <select id="addLocation">
-                        <option>Pantry</option>
-                        <option>Fridge</option>
-                        <option>Freezer</option>
-                    </select>
-                    <label for="addOwner">Whose is it? (optional)</label>
-                    <input type="text" id="addOwner" placeholder="e.g. Nick, Arthur">
-                    <label for="addExpiration">Expiration date</label>
-                    <input type="date" id="addExpiration" required>
-                    <label><input type="checkbox" id="addShareable"> Shareable</label>
-                </fieldset>
+          <fieldset id="foodFields">
+            <label for="addLocation">Location</label>
+            <select id="addLocation">
+              <option>Pantry</option>
+              <option>Fridge</option>
+              <option>Freezer</option>
+            </select>
+            <label for="addOwner">Whose is it? (optional)</label>
+            <input type="text" id="addOwner" placeholder="e.g. Nick, Arthur" />
+            <label for="addExpiration">Expiration date</label>
+            <input type="date" id="addExpiration" required />
+            <label><input type="checkbox" id="addShareable" /> Shareable</label>
+          </fieldset>
 
-                <fieldset id="applianceFields">
-                    <label for="addDescription">Description</label>
-                    <textarea id="addDescription" rows="4" required></textarea>
-                </fieldset>
+          <fieldset id="applianceFields">
+            <label for="addDescription">Description</label>
+            <textarea id="addDescription" rows="4" required></textarea>
+          </fieldset>
 
-                <div class="DialogButtons">
-                    <button type="button" class="SecondaryButton" id="addCancel">Cancel</button>
-                    <button type="submit" class="PrimaryButton">Add</button>
-                </div>
-            </form>
-        </dialog>
+          <div class="DialogButtons">
+            <button type="button" class="SecondaryButton" id="addCancel">
+              Cancel
+            </button>
+            <button type="submit" class="PrimaryButton">Add</button>
+          </div>
+        </form>
+      </dialog>
 
-        
-    <footer>
-        <button class="tablink active" onclick="window.location.href='index.html'">
-            <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
-            <p1>Inventory</p1>
+      <footer>
+        <button
+          class="tablink active"
+          onclick="window.location.href = 'index.html'"
+        >
+          <img
+            class="tablink_icon"
+            src="icons/inventory.svg"
+            width="50"
+            height="50"
+          />
+          <p1>Inventory</p1>
         </button>
-        <button class="tablink" onclick="window.location.href='Grocery_tab.html'">
-            <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50">
-            <p1>Groceries</p1>
+        <button
+          class="tablink"
+          onclick="window.location.href = 'Grocery_tab.html'"
+        >
+          <img
+            class="tablink_icon"
+            src="icons/groceries.svg"
+            width="50"
+            height="50"
+          />
+          <p1>Groceries</p1>
         </button>
-        <button class="tablink" onclick="window.location.href='Recipes.html'">
-            <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
-            <p1>Recipes</p1>
+        <button class="tablink" onclick="window.location.href = 'Recipes.html'">
+          <img
+            class="tablink_icon"
+            src="icons/recipes.svg"
+            width="50"
+            height="50"
+          />
+          <p1>Recipes</p1>
         </button>
-        <button class="tablink" onclick="window.location.href='MyHousehold.html'" id=" defaultOpen">
-            <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
-            <p1>My Household</p1>
+        <button
+          class="tablink"
+          onclick="window.location.href = 'MyHousehold.html'"
+          id=" defaultOpen"
+        >
+          <img
+            class="tablink_icon"
+            src="icons/home.svg"
+            width="50"
+            height="50"
+          />
+          <p1>My Household</p1>
         </button>
-        <!-- <button class="tablink" onclick="window.location.href='Profile.html'">
-            <img src="icons/user.png" width="50" height="50">
-            <p1>Profile</p1>
-        </button> -->
-    </footer>
+      </footer>
     </div>
 
     <script>
-        // Sample data. Food items have a location of Pantry, Fridge, or Freezer;
-        // appliances have a description instead of an owner/expiration.
-        const inventory = [
-            { name: "Apples", quantity: 10, location: "Pantry", owner: "", expiration: "2026-11-05", shareable: true },
-            { name: "Bananas", quantity: 4, location: "Pantry", owner: "Arthur", expiration: "2026-10-30", shareable: false },
-            { name: "Grapes", quantity: 3, location: "Fridge", owner: "Nick, Arthur", expiration: "2026-11-01", shareable: false },
-            { name: "Pots", quantity: 2, location: "Appliances", description: "Two stainless steel pots (3 qt and 6 qt). Hand wash only." },
-            { name: "Toaster", quantity: 1, location: "Appliances", description: "2-slice toaster. Empty the crumb tray at the bottom once a week." },
-            { name: "Oranges", quantity: 5, location: "Pantry", owner: "Daniel", expiration: "2026-11-08", shareable: true },
-            { name: "Milk", quantity: 1, location: "Fridge", owner: "", expiration: "2026-10-27", shareable: true },
-            { name: "Cheese", quantity: 2, location: "Fridge", owner: "Nick", expiration: "2026-11-12", shareable: true },
-            { name: "Ice Cream", quantity: 1, location: "Freezer", owner: "Daniel", expiration: "2027-02-01", shareable: false },
-            { name: "Frozen Peas", quantity: 2, location: "Freezer", owner: "", expiration: "2027-04-01", shareable: true },
-            { name: "Air Fryer", quantity: 1, location: "Appliances", description: "4-quart air fryer. Basket is dishwasher safe. Preheat for 3 minutes before cooking." }
-        ];
+      // Sample data. Food items have a location of Pantry, Fridge, or Freezer;
+      // appliances have a description instead of an owner/expiration.
+      const inventory = [
+        {
+          name: "Apples",
+          quantity: 10,
+          location: "Pantry",
+          owner: "",
+          expiration: "2026-11-05",
+          shareable: true,
+        },
+        {
+          name: "Bananas",
+          quantity: 4,
+          location: "Pantry",
+          owner: "Arthur",
+          expiration: "2026-10-30",
+          shareable: false,
+        },
+        {
+          name: "Grapes",
+          quantity: 3,
+          location: "Fridge",
+          owner: "Nick, Arthur",
+          expiration: "2026-11-01",
+          shareable: false,
+        },
+        {
+          name: "Pots",
+          quantity: 2,
+          location: "Appliances",
+          description:
+            "Two stainless steel pots (3 qt and 6 qt). Hand wash only.",
+        },
+        {
+          name: "Toaster",
+          quantity: 1,
+          location: "Appliances",
+          description:
+            "2-slice toaster. Empty the crumb tray at the bottom once a week.",
+        },
+        {
+          name: "Oranges",
+          quantity: 5,
+          location: "Pantry",
+          owner: "Daniel",
+          expiration: "2026-11-08",
+          shareable: true,
+        },
+        {
+          name: "Milk",
+          quantity: 1,
+          location: "Fridge",
+          owner: "",
+          expiration: "2026-10-27",
+          shareable: true,
+        },
+        {
+          name: "Cheese",
+          quantity: 2,
+          location: "Fridge",
+          owner: "Nick",
+          expiration: "2026-11-12",
+          shareable: true,
+        },
+        {
+          name: "Ice Cream",
+          quantity: 1,
+          location: "Freezer",
+          owner: "Daniel",
+          expiration: "2027-02-01",
+          shareable: false,
+        },
+        {
+          name: "Frozen Peas",
+          quantity: 2,
+          location: "Freezer",
+          owner: "",
+          expiration: "2027-04-01",
+          shareable: true,
+        },
+        {
+          name: "Air Fryer",
+          quantity: 1,
+          location: "Appliances",
+          description:
+            "4-quart air fryer. Basket is dishwasher safe. Preheat for 3 minutes before cooking.",
+        },
+      ];
 
-        const FOOD_LOCATIONS = ["Pantry", "Fridge", "Freezer"];
+      const FOOD_LOCATIONS = ["Pantry", "Fridge", "Freezer"];
 
-        let selectedLocation = null; // null shows every location
-        let sortMode = "az";
-        let removeMode = false;
-        let openItem = null;
+      let selectedLocation = null; // null shows every location
+      let sortMode = "az";
+      let removeMode = false;
+      let openItem = null;
 
-        const inventoryList = document.getElementById("inventoryList");
-        const searchInput = document.getElementById("searchInput");
-        const menuPopover = document.getElementById("menuPopover");
-        const sortPopover = document.getElementById("sortPopover");
-        const detailsDialog = document.getElementById("detailsDialog");
-        const addDialog = document.getElementById("addDialog");
-        const addForm = document.getElementById("addForm");
-        const foodFields = document.getElementById("foodFields");
-        const applianceFields = document.getElementById("applianceFields");
+      const inventoryList = document.getElementById("inventoryList");
+      const searchInput = document.getElementById("searchInput");
+      const menuPopover = document.getElementById("menuPopover");
+      const sortPopover = document.getElementById("sortPopover");
+      const detailsDialog = document.getElementById("detailsDialog");
+      const addDialog = document.getElementById("addDialog");
+      const addForm = document.getElementById("addForm");
+      const foodFields = document.getElementById("foodFields");
+      const applianceFields = document.getElementById("applianceFields");
 
-        function makeElement(tag, className, text) {
-            const element = document.createElement(tag);
-            if (className) element.className = className;
-            if (text) element.textContent = text;
-            return element;
-        }
+      function makeElement(tag, className, text) {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        if (text) element.textContent = text;
+        return element;
+      }
 
-        // "10x Apples", or just "Apples" when there's no quantity
-        function displayName(item) {
-            return item.quantity ? item.quantity + "x " + item.name : item.name;
-        }
+      // "10x Apples", or just "Apples" when there's no quantity
+      function displayName(item) {
+        return item.quantity ? item.quantity + "x " + item.name : item.name;
+      }
 
-        // Dates are stored as YYYY-MM-DD; shown as M/D/YYYY like the rest of the mockup
-        function formatDate(dateString) {
-            const [year, month, day] = dateString.split("-");
-            return Number(month) + "/" + Number(day) + "/" + year;
-        }
+      // Dates are stored as YYYY-MM-DD; shown as M/D/YYYY like the rest of the mockup
+      function formatDate(dateString) {
+        const [year, month, day] = dateString.split("-");
+        return Number(month) + "/" + Number(day) + "/" + year;
+      }
 
-        function byName(a, b) {
-            return a.name.localeCompare(b.name);
-        }
+      function byName(a, b) {
+        return a.name.localeCompare(b.name);
+      }
 
-        function getVisibleItems() {
-            const query = searchInput.value.trim().toLowerCase();
-            const items = inventory.filter(item =>
-                (!selectedLocation || item.location === selectedLocation) &&
-                item.name.toLowerCase().includes(query));
+      function getVisibleItems() {
+        const query = searchInput.value.trim().toLowerCase();
+        const items = inventory.filter(
+          (item) =>
+            (!selectedLocation || item.location === selectedLocation) &&
+            item.name.toLowerCase().includes(query),
+        );
 
-            if (sortMode === "az") {
-                items.sort(byName);
-            } else if (sortMode === "za") {
-                items.sort((a, b) => byName(b, a));
-            } else if (sortMode === "quantity") {
-                items.sort((a, b) => (b.quantity || 0) - (a.quantity || 0) || byName(a, b));
-            } else if (sortMode === "expiration") {
-                // Soonest first; appliances (no expiration) go to the bottom
-                items.sort(function (a, b) {
-                    if (!a.expiration || !b.expiration) {
-                        return (!a.expiration - !b.expiration) || byName(a, b);
-                    }
-                    return a.expiration.localeCompare(b.expiration) || byName(a, b);
-                });
+        if (sortMode === "az") {
+          items.sort(byName);
+        } else if (sortMode === "za") {
+          items.sort((a, b) => byName(b, a));
+        } else if (sortMode === "quantity") {
+          items.sort(
+            (a, b) => (b.quantity || 0) - (a.quantity || 0) || byName(a, b),
+          );
+        } else if (sortMode === "expiration") {
+          // Soonest first; appliances (no expiration) go to the bottom
+          items.sort(function (a, b) {
+            if (!a.expiration || !b.expiration) {
+              return !a.expiration - !b.expiration || byName(a, b);
             }
-            return items;
+            return a.expiration.localeCompare(b.expiration) || byName(a, b);
+          });
         }
+        return items;
+      }
 
-        function removeItem(item) {
-            if (!confirm("Remove " + item.name + " from " + item.location + "?")) return false;
-            inventory.splice(inventory.indexOf(item), 1);
-            renderList();
-            return true;
-        }
-
-        function makeRow(item) {
-            const row = makeElement("li", "InventoryRow");
-            row.tabIndex = 0;
-
-            const info = makeElement("div");
-            info.appendChild(makeElement("h2", null, displayName(item)));
-            const sub = makeElement("p", "RowSub");
-            sub.appendChild(makeElement("span", null, item.location));
-            if (item.owner) sub.appendChild(makeElement("span", "RowOwner", item.owner));
-            info.appendChild(sub);
-            row.appendChild(info);
-
-            if (removeMode) {
-                const removeButton = makeElement("button", "RowRemove", "✕");
-                removeButton.setAttribute("aria-label", "Remove " + item.name);
-                removeButton.addEventListener("click", function (event) {
-                    event.stopPropagation(); // don't also open the details
-                    removeItem(item);
-                });
-                row.appendChild(removeButton);
-            }
-
-            row.addEventListener("click", () => openDetails(item));
-            row.addEventListener("keydown", function (event) {
-                if (event.key === "Enter") openDetails(item);
-            });
-            return row;
-        }
-
-        function renderList() {
-            const items = getVisibleItems();
-            inventoryList.innerHTML = "";
-            if (items.length === 0) {
-                const where = selectedLocation || "your inventory";
-                const message = searchInput.value.trim()
-                    ? "No matches in " + where + "."
-                    : "Nothing in " + where + " yet.";
-                inventoryList.appendChild(makeElement("p", "EmptyMessage", message));
-                return;
-            }
-            for (const item of items) {
-                inventoryList.appendChild(makeRow(item));
-            }
-        }
-
-        // Details dialog
-        function addDetail(label, value) {
-            const line = makeElement("p");
-            line.appendChild(makeElement("strong", null, label + ": "));
-            line.appendChild(document.createTextNode(value));
-            document.getElementById("detailsBody").appendChild(line);
-        }
-
-        function openDetails(item) {
-            openItem = item;
-            document.getElementById("detailsTitle").textContent = displayName(item);
-            document.getElementById("detailsBody").innerHTML = "";
-            addDetail("Location", item.location);
-            if (item.location === "Appliances") {
-                addDetail("Description", item.description);
-            } else {
-                addDetail("Whose", item.owner || "Not set");
-                addDetail("Expires", formatDate(item.expiration));
-                addDetail("Shareable", item.shareable ? "Yes" : "No");
-            }
-            detailsDialog.showModal();
-        }
-
-        document.getElementById("detailsClose").addEventListener("click", () => detailsDialog.close());
-        document.getElementById("detailsRemove").addEventListener("click", function () {
-            if (removeItem(openItem)) detailsDialog.close();
-        });
-
-        // Dropdown menus
-        function closePopovers() {
-            menuPopover.hidden = true;
-            sortPopover.hidden = true;
-            document.querySelectorAll(".IconButton").forEach(b => b.classList.remove("active"));
-        }
-
-        function togglePopover(popover, button) {
-            const wasHidden = popover.hidden;
-            closePopovers();
-            popover.hidden = !wasHidden;
-            button.classList.toggle("active", wasHidden);
-        }
-
-        document.getElementById("menuButton").addEventListener("click", function () {
-            togglePopover(menuPopover, this);
-        });
-        document.getElementById("sortButton").addEventListener("click", function () {
-            togglePopover(sortPopover, this);
-        });
-        document.addEventListener("click", function (event) {
-            if (!event.target.closest(".Popover, .IconButton")) closePopovers();
-        });
-
-        sortPopover.querySelectorAll("button").forEach(function (button) {
-            button.addEventListener("click", function () {
-                sortMode = button.dataset.sort;
-                sortPopover.querySelectorAll("button").forEach(b => b.classList.remove("active"));
-                button.classList.add("active");
-                closePopovers();
-                renderList();
-            });
-        });
-
-        searchInput.addEventListener("input", renderList);
-
-        // Location tabs: tap to show one location, tap again to show everything
-        document.querySelectorAll(".LocationPill").forEach(function (pill) {
-            pill.addEventListener("click", function () {
-                const location = pill.dataset.location;
-                selectedLocation = selectedLocation === location ? null : location;
-                document.querySelectorAll(".LocationPill").forEach(p =>
-                    p.classList.toggle("active", p.dataset.location === selectedLocation));
-                renderList();
-            });
-        });
-
-        // Remove mode
-        function setRemoveMode(on) {
-            removeMode = on;
-            document.getElementById("removeBanner").hidden = !on;
-            document.getElementById("menuRemove").textContent = on ? "Stop Removing" : "Remove Items";
-            renderList();
-        }
-
-        document.getElementById("menuRemove").addEventListener("click", function () {
-            closePopovers();
-            setRemoveMode(!removeMode);
-        });
-        document.getElementById("removeDone").addEventListener("click", () => setRemoveMode(false));
-
-        // Add dialog
-        let addingAppliance = false;
-
-        function openAddDialog(isAppliance) {
-            closePopovers();
-            addingAppliance = isAppliance;
-            addForm.reset();
-            document.getElementById("addTitle").textContent = isAppliance ? "Add Appliance" : "Add Item";
-            // Disabled fieldsets are skipped by form validation, so hidden required fields don't block submit
-            foodFields.hidden = foodFields.disabled = isAppliance;
-            applianceFields.hidden = applianceFields.disabled = !isAppliance;
-            if (FOOD_LOCATIONS.includes(selectedLocation)) {
-                document.getElementById("addLocation").value = selectedLocation;
-            }
-            addDialog.showModal();
-        }
-
-        document.getElementById("menuAddItem").addEventListener("click", () => openAddDialog(false));
-        document.getElementById("menuAddAppliance").addEventListener("click", () => openAddDialog(true));
-        document.getElementById("addCancel").addEventListener("click", () => addDialog.close());
-
-        addForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const item = {
-                name: document.getElementById("addName").value.trim(),
-                quantity: parseInt(document.getElementById("addQuantity").value) || null
-            };
-            if (addingAppliance) {
-                item.location = "Appliances";
-                item.description = document.getElementById("addDescription").value.trim();
-            } else {
-                item.location = document.getElementById("addLocation").value;
-                item.owner = document.getElementById("addOwner").value.trim();
-                item.expiration = document.getElementById("addExpiration").value;
-                item.shareable = document.getElementById("addShareable").checked;
-            }
-            inventory.push(item);
-            addDialog.close();
-            renderList();
-        });
-
+      function removeItem(item) {
+        if (!confirm("Remove " + item.name + " from " + item.location + "?"))
+          return false;
+        inventory.splice(inventory.indexOf(item), 1);
         renderList();
-    </script>
-</body>
+        return true;
+      }
 
+      function makeRow(item) {
+        const row = makeElement("li", "InventoryRow");
+        row.tabIndex = 0;
+
+        const info = makeElement("div");
+        info.appendChild(makeElement("h2", null, displayName(item)));
+        const sub = makeElement("p", "RowSub");
+        sub.appendChild(makeElement("span", null, item.location));
+        if (item.owner)
+          sub.appendChild(makeElement("span", "RowOwner", item.owner));
+        info.appendChild(sub);
+        row.appendChild(info);
+
+        if (removeMode) {
+          const removeButton = makeElement("button", "RowRemove", "✕");
+          removeButton.setAttribute("aria-label", "Remove " + item.name);
+          removeButton.addEventListener("click", function (event) {
+            event.stopPropagation(); // don't also open the details
+            removeItem(item);
+          });
+          row.appendChild(removeButton);
+        }
+
+        row.addEventListener("click", () => openDetails(item));
+        row.addEventListener("keydown", function (event) {
+          if (event.key === "Enter") openDetails(item);
+        });
+        return row;
+      }
+
+      function renderList() {
+        const items = getVisibleItems();
+        inventoryList.innerHTML = "";
+        if (items.length === 0) {
+          const where = selectedLocation || "your inventory";
+          const message = searchInput.value.trim()
+            ? "No matches in " + where + "."
+            : "Nothing in " + where + " yet.";
+          inventoryList.appendChild(makeElement("p", "EmptyMessage", message));
+          return;
+        }
+        for (const item of items) {
+          inventoryList.appendChild(makeRow(item));
+        }
+      }
+
+      // Details dialog
+      function addDetail(label, value) {
+        const line = makeElement("p");
+        line.appendChild(makeElement("strong", null, label + ": "));
+        line.appendChild(document.createTextNode(value));
+        document.getElementById("detailsBody").appendChild(line);
+      }
+
+      function openDetails(item) {
+        openItem = item;
+        document.getElementById("detailsTitle").textContent = displayName(item);
+        document.getElementById("detailsBody").innerHTML = "";
+        addDetail("Location", item.location);
+        if (item.location === "Appliances") {
+          addDetail("Description", item.description);
+        } else {
+          addDetail("Whose", item.owner || "Not set");
+          addDetail("Expires", formatDate(item.expiration));
+          addDetail("Shareable", item.shareable ? "Yes" : "No");
+        }
+        detailsDialog.showModal();
+      }
+
+      document
+        .getElementById("detailsClose")
+        .addEventListener("click", () => detailsDialog.close());
+      document
+        .getElementById("detailsRemove")
+        .addEventListener("click", function () {
+          if (removeItem(openItem)) detailsDialog.close();
+        });
+
+      // Dropdown menus
+      function closePopovers() {
+        menuPopover.hidden = true;
+        sortPopover.hidden = true;
+        document
+          .querySelectorAll(".IconButton")
+          .forEach((b) => b.classList.remove("active"));
+      }
+
+      function togglePopover(popover, button) {
+        const wasHidden = popover.hidden;
+        closePopovers();
+        popover.hidden = !wasHidden;
+        button.classList.toggle("active", wasHidden);
+      }
+
+      document
+        .getElementById("menuButton")
+        .addEventListener("click", function () {
+          togglePopover(menuPopover, this);
+        });
+      document
+        .getElementById("sortButton")
+        .addEventListener("click", function () {
+          togglePopover(sortPopover, this);
+        });
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".Popover, .IconButton")) closePopovers();
+      });
+
+      sortPopover.querySelectorAll("button").forEach(function (button) {
+        button.addEventListener("click", function () {
+          sortMode = button.dataset.sort;
+          sortPopover
+            .querySelectorAll("button")
+            .forEach((b) => b.classList.remove("active"));
+          button.classList.add("active");
+          closePopovers();
+          renderList();
+        });
+      });
+
+      searchInput.addEventListener("input", renderList);
+
+      // Location tabs: tap to show one location, tap again to show everything
+      document.querySelectorAll(".LocationPill").forEach(function (pill) {
+        pill.addEventListener("click", function () {
+          const location = pill.dataset.location;
+          selectedLocation = selectedLocation === location ? null : location;
+          document
+            .querySelectorAll(".LocationPill")
+            .forEach((p) =>
+              p.classList.toggle(
+                "active",
+                p.dataset.location === selectedLocation,
+              ),
+            );
+          renderList();
+        });
+      });
+
+      // Remove mode
+      function setRemoveMode(on) {
+        removeMode = on;
+        document.getElementById("removeBanner").hidden = !on;
+        document.getElementById("menuRemove").textContent = on
+          ? "Stop Removing"
+          : "Remove Items";
+        renderList();
+      }
+
+      document
+        .getElementById("menuRemove")
+        .addEventListener("click", function () {
+          closePopovers();
+          setRemoveMode(!removeMode);
+        });
+      document
+        .getElementById("removeDone")
+        .addEventListener("click", () => setRemoveMode(false));
+
+      // Add dialog
+      let addingAppliance = false;
+
+      function openAddDialog(isAppliance) {
+        closePopovers();
+        addingAppliance = isAppliance;
+        addForm.reset();
+        document.getElementById("addTitle").textContent = isAppliance
+          ? "Add Appliance"
+          : "Add Item";
+        // Disabled fieldsets are skipped by form validation, so hidden required fields don't block submit
+        foodFields.hidden = foodFields.disabled = isAppliance;
+        applianceFields.hidden = applianceFields.disabled = !isAppliance;
+        if (FOOD_LOCATIONS.includes(selectedLocation)) {
+          document.getElementById("addLocation").value = selectedLocation;
+        }
+        addDialog.showModal();
+      }
+
+      document
+        .getElementById("menuAddItem")
+        .addEventListener("click", () => openAddDialog(false));
+      document
+        .getElementById("menuAddAppliance")
+        .addEventListener("click", () => openAddDialog(true));
+      document
+        .getElementById("addCancel")
+        .addEventListener("click", () => addDialog.close());
+
+      addForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const item = {
+          name: document.getElementById("addName").value.trim(),
+          quantity:
+            parseInt(document.getElementById("addQuantity").value) || null,
+        };
+        if (addingAppliance) {
+          item.location = "Appliances";
+          item.description = document
+            .getElementById("addDescription")
+            .value.trim();
+        } else {
+          item.location = document.getElementById("addLocation").value;
+          item.owner = document.getElementById("addOwner").value.trim();
+          item.expiration = document.getElementById("addExpiration").value;
+          item.shareable = document.getElementById("addShareable").checked;
+        }
+        inventory.push(item);
+        addDialog.close();
+        renderList();
+      });
+
+      renderList();
+    </script>
+  </body>
 </html>
