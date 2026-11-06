@@ -3,9 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grocery Lists</title>
+    <title>Kitchen Kompanion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="Grocery.css" />
     <link rel="stylesheet" href="global.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -134,53 +140,12 @@
                 <div id='add_form_${title}'></div>
                 <div id="grocery-list ${title}">
                 </div>
-                <img id="add_item ${title}" src="icons/add.png" width="25" height="25" onclick="openAddForm('${title}')">
+                <img id="add_item ${title}" src="/icons/add.png" width="25" height="25" onclick="openAddForm('${title}')">
             </div> 
             `;
         add_item_buttonShow(title);
         document.getElementById("form-container").reset();
       }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const title = "Costco";
-        const defaultList = {
-          title: title,
-          date: "2026-11-05",
-          items: ["Apples", "Bananas"],
-        };
-        localStorage.setItem(
-          `groceryLists ${title}`,
-          JSON.stringify(defaultList),
-        );
-        document.getElementById("grocery_lists").innerHTML += `
-            <div class="grocery_list" id="grocery ${title}">
-            <h2><u>${title} added on: ${defaultList.date}</u></h2>
-            <div id="add_form_${title}"></div>
-            <div id="grocery-list ${title}"></div>
-            <img id="add_item ${title}" src="icons/add.png" width="25" height="25" onclick="openAddForm('${title}')">
-            </div>`;
-        makeList(title);
-      });
-
-      document.addEventListener("focusin", function (event) {
-        if (
-          event.target.matches(
-            "input[type='text'], input[type='date'], textarea",
-          )
-        ) {
-          document.getElementById("keyboard").style.display = "block";
-        }
-      });
-
-      document.addEventListener("focusout", function (event) {
-        if (
-          event.target.matches(
-            "input[type='text'], input[type='date'], textarea",
-          )
-        ) {
-          document.getElementById("keyboard").style.display = "none";
-        }
-      });
     </script>
 
     <!-- sample grocery list div, tso be added everytime someone adds a new list -->
@@ -195,7 +160,7 @@
     <div class="device">
       <div class="header">
         <div class="header_logo">
-          <img src="icons/leaves.png" width="50" height="50" />
+          <img src="/icons/leaves.png" width="50" height="50" />
           <h2>Groceries</h2>
         </div>
       </div>
@@ -204,7 +169,7 @@
         <!-- goes to addgrocerylistpopup() -->
         <img
           id="add_button"
-          src="icons/add.png"
+          src="/icons/add.png"
           width="50"
           height="50"
           onclick="addGroceryListPopup()"
@@ -213,7 +178,7 @@
 
       <div id="grocery_lists"></div>
       <!-- <div id="item_lists"></div> -->
-      <!-- <img id="add_item_button" src="icons/add.png" width="25" height="25" onclick="openAddForm()"> -->
+      <!-- <img id="add_item_button" src="/icons/add.png" width="25" height="25" onclick="openAddForm()"> -->
 
       <!-- popup form for when the add list button is pressed -->
       <div class="form-popup" id="grocery_list_form">
@@ -305,7 +270,6 @@
           <p1>My Household</p1>
         </button>
       </footer>
-      <img id="keyboard" src="icons/keyboard.png" alt="Keyboard" />
     </div>
   </body>
 </html>
