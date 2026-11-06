@@ -3,6 +3,8 @@
 .InventoryScreen {
     height: 100%;
     padding: 1rem;
+    /* Leave room for the footer (112px tall) so it doesn't cover the panel */
+    padding-bottom: calc(112px + 1rem);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
