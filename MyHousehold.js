@@ -1,4 +1,4 @@
-// localStorage.clear();
+localStorage.clear();
 // Sample data, used the first time the page is opened. After that, profiles and
 // chores are saved in localStorage so they stick around between visits.
 const defaultProfiles = [
@@ -103,7 +103,7 @@ function removeProfile(profile) {
 function openProfileDialog(profile) {
     editingProfile = profile;
     profileForm.reset();
-    document.getElementById("profileTitle").textContent = profile ? "Edit Profile" : "Add Profile";
+    document.getElementById("profileTitle").textContent = profile ? "Edit Profile" : "Add Member";
 
     if (profile) {
         document.getElementById("profileName").value = profile.name;
@@ -121,7 +121,7 @@ function openProfileDialog(profile) {
         }
         document.getElementById("profileOtherAllergies").value = otherAllergies.join(", ");
     }
-    profileDialog.showModal();
+    profileDialog.show();
 }
 
 document.getElementById("addProfileButton").addEventListener("click", () => openProfileDialog(null));
@@ -227,7 +227,7 @@ function openChoreDialog() {
         personSelect.appendChild(makeElement("option", null, profile.name));
     }
     personSelect.appendChild(makeElement("option", null, "Unassigned"));
-    choreDialog.showModal();
+    choreDialog.show();
 }
 
 document.getElementById("addChoreButton").addEventListener("click", openChoreDialog);
