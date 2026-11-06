@@ -1,8 +1,6 @@
-/* Styles specific to Inventory.html. Shared styles live in global.css. */
-
 .InventoryScreen {
     height: 100%;
-    padding: 1rem;
+    padding: 20px 0 16px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

@@ -1,4 +1,10 @@
 /* Global Styles */
+@font-face {
+    font-family: Overpass;
+    src: url("fonts/Overpass.woff2") format("woff2");
+    font-weight: 100 900;
+}
+
 .device {
     margin: 20px auto;
     padding: 0;
@@ -8,7 +14,8 @@
     background-color: #FDF7F1;
     position: relative;
     text-align: left;
-    padding: 0 20px 20px;
+    padding: 0 20px 115px;
+    box-sizing: border-box;
 }
 
 .content {
@@ -29,7 +36,7 @@ h1 {
     color: #3A2C26;
     font-family: Overpass;
     font-weight: 900;
-    font-size: 28px;
+    font-size: 32px;
     margin: 0;
 }
 
@@ -37,7 +44,7 @@ h2 {
     color: #3A2C26;
     font-family: Overpass;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 26px;
     margin: 0;
 }
 
@@ -45,7 +52,7 @@ p {
     color: #665140;
     font-family: Overpass;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 20px;
     margin: 0;
 }
 
@@ -55,6 +62,7 @@ p {
     align-items: center;
     gap: 12px;
     justify-content: space-between;
+    padding: 20px 0;
 }
 
 .header_text {
@@ -312,4 +320,19 @@ footer {
     text-align: center;
     position: fixed;
     bottom: 0;
+}
+
+.Keyboard {
+    display: none;
+    width: 100%;
+}
+
+form:has(input[type="text"]:focus) .Keyboard {
+    display: block;
+}
+
+dialog .Keyboard {
+    width: calc(100% + 48px);
+    max-width: none;
+    margin: 8px -24px -20px;
 }
