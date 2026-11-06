@@ -18,161 +18,156 @@
 <body>
   <div class="device">
     <!-- HEADER -->
-    <div class="recipes-header">
-      <div class="recipes-top">
-        <div id="page-title">
-          <h1>Recipes</h1>
-        <img class="logo" src="icons/leaves.png" />
-        </div>
+    <div class="header">
+      <div class="header_logo">
+        <img class="logo" src="icons/leaves.svg" />
+        <h1>Recipes</h1>
       </div>
-
-      <hr class="header-line" />
-      <div class="search-bar">
-        <img class="search-icon" src="icons/search.png" width="25" height="25"/>
-        <input type="text" id="search-input" placeholder="Search by name...">
-        <img id="filter-icon" src="icons/filter.png" width="25" height="25" onclick="toggleFilter()"/>
-      </div>
-        <hr class="search-line" />
     </div>
+      <div class="search-bar">
+        <img class="search-icon" src="icons/search.png" width="25" height="25" />
+        <input type="text" id="search-input" placeholder="Search by name...">
+        <img id="filter-icon" src="icons/filter.png" width="25" height="25" onclick="toggleFilter()" />
+      </div>
     <!-- HEADER -->
 
     <div id="add-form">
-        <h1>Add Recipe</h1>
+      <h1>Add Recipe</h1>
 
-        <!-- general -->
-        <fieldset class="fieldset">
-          <legend>General</legend>
-          <label for="recipe-name">Recipe Name</label>
-          <input type="text" id="recipe-name" />
-          <label for="difficulty">Difficulty</label>
-          <select name="difficulty" id="difficulty">
-            <option value="Easy">Easy</option>
-            <option value="Medium">Medium</option>
-            <option value="Hard">Hard</option>
-          </select>
-          <label for="duration">Duration</label>
-          <input type="text" id="duration" />
-        </fieldset>
+      <!-- general -->
+      <fieldset class="fieldset">
+        <legend>General</legend>
+        <label for="recipe-name">Recipe Name</label>
+        <input type="text" id="recipe-name" />
+        <label for="difficulty">Difficulty</label>
+        <select name="difficulty" id="difficulty">
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+        <label for="duration">Duration</label>
+        <input type="text" id="duration" />
+      </fieldset>
 
-        <!-- ingredients -->
+      <!-- ingredients -->
 
-        <fieldset class="fieldset">
-          <legend>Ingredients</legend>
+      <fieldset class="fieldset">
+        <legend>Ingredients</legend>
 
-          <div id="ingredients">
-            <div id="ingredients-list"></div>
+        <div id="ingredients">
+          <div id="ingredients-list"></div>
 
-            <!-- bottom unit, will always be here -->
-            <div id="add-ingredient">
-              <img id="add-ingredient-button" src="icons/add.png" width="25" height="25" onclick="addIngredient()" />
-              <input type="text" id="add-ingredient-text" placeholder="Ingredients here..." maxlength="50" />
-            </div>
+          <!-- bottom unit, will always be here -->
+          <div id="add-ingredient">
+            <img id="add-ingredient-button" src="icons/add.png" width="25" height="25" onclick="addIngredient()" />
+            <input type="text" id="add-ingredient-text" placeholder="Ingredients here..." maxlength="50" />
           </div>
-        </fieldset>
-
-        <!-- instructions -->
-        <fieldset class="fieldset">
-          <legend>Instructions</legend>
-
-          <div id="instructions">
-            <div id="instructions-list"></div>
-
-            <!-- bottom instruction unit, will always be here -->
-            <div id="add-instruction">
-              <img id="add-instruction-button" src="icons/add.png" width="25" height="25" onclick="addInstruction()" />
-              <input type="text" id="add-instruction-text" placeholder="Instruction here..." maxlength="100" />
-            </div>
-          </div>
-        </fieldset>
-        <div class="buttons">
-          <submit class="button" id="submit-recipe" onclick="addRecipe()">Add Recipe</submit>
-          <div class="button" id="close-recipe" onclick="closeRecipeForm()">Close</div>
         </div>
+      </fieldset>
 
+      <!-- instructions -->
+      <fieldset class="fieldset">
+        <legend>Instructions</legend>
+
+        <div id="instructions">
+          <div id="instructions-list"></div>
+
+          <!-- bottom instruction unit, will always be here -->
+          <div id="add-instruction">
+            <img id="add-instruction-button" src="icons/add.png" width="25" height="25" onclick="addInstruction()" />
+            <input type="text" id="add-instruction-text" placeholder="Instruction here..." maxlength="100" />
+          </div>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <submit class="button" id="submit-recipe" onclick="addRecipe()">Add Recipe</submit>
+        <div class="button" id="close-recipe" onclick="closeRecipeForm()">Close</div>
       </div>
 
-      <div id="view-filters">
-        <h1>Sort By</h1>
-        <div class="buttons sort-buttons">
-          <div class="button active" id="sort-az" onclick="toggleSort('az')">
-            A-Z
-          </div>
-          <div class="button" id="sort-za" onclick="toggleSort('za')">
-            Z-A
-          </div>
-          <!--<div class="button" id="sort-time-shortest" onclick="toggleSort('shortest')">
+    </div>
+
+    <div id="view-filters">
+      <h1>Sort By</h1>
+      <div class="buttons sort-buttons">
+        <div class="button active" id="sort-az" onclick="toggleSort('az')">
+          A-Z
+        </div>
+        <div class="button" id="sort-za" onclick="toggleSort('za')">
+          Z-A
+        </div>
+        <!--<div class="button" id="sort-time-shortest" onclick="toggleSort('shortest')">
             Shortest-Longest
           </div>
           <div class="button" id="sort-time-longest" onclick="toggleSort('longest')">
             Longest-Shortest
           </div>-->
-        </div>
-      
       </div>
 
-      <div class="filter-attribute" id="filter-difficulty">
-        <h1>Difficulty</h1>
-        <div class="buttons">
-          <div class="button" id="easy-pill" onClick="toggleDifficulty('easy')">Easy</div>
-          <div class="button" id="medium-pill" onClick="toggleDifficulty('medium')">Medium</div>
-          <div class="button" id="hard-pill" onClick="toggleDifficulty('hard')">Hard</div>
-        </div>
-        <div class="button" onClick="togglePill('difficulty', 'close')">Close</div>
+    </div>
+
+    <div class="filter-attribute" id="filter-difficulty">
+      <h1>Difficulty</h1>
+      <div class="buttons">
+        <div class="button" id="easy-pill" onClick="toggleDifficulty('easy')">Easy</div>
+        <div class="button" id="medium-pill" onClick="toggleDifficulty('medium')">Medium</div>
+        <div class="button" id="hard-pill" onClick="toggleDifficulty('hard')">Hard</div>
       </div>
+      <div class="button" onClick="togglePill('difficulty', 'close')">Close</div>
+    </div>
 
-      <div class="filter-attribute" id="filter-ingredients">
-        <h1>Ingredients</h1>
-        <div id="filter-ingredient-list" style="display: flex; flex-direction: column">
-   
-          </div>
-        <div id="add-ingredient">
-          <img id="add-ingredient-button" src="icons/add.png" width="25" height="25" onclick="addIngredientToFilter()" />
-          <input type="text" id="filter-ingredient-text" placeholder="Ingredient name..." maxlength="50" />
-        </div>
-        <div class="button" onClick="togglePill('ingredients', 'close')">Close</div>
+    <div class="filter-attribute" id="filter-ingredients">
+      <h1>Ingredients</h1>
+      <div id="filter-ingredient-list" style="display: flex; flex-direction: column">
+
       </div>
+      <div id="add-ingredient">
+        <img id="add-ingredient-button" src="icons/add.png" width="25" height="25" onclick="addIngredientToFilter()" />
+        <input type="text" id="filter-ingredient-text" placeholder="Ingredient name..." maxlength="50" />
+      </div>
+      <div class="button" onClick="togglePill('ingredients', 'close')">Close</div>
+    </div>
 
-      <div id="view-recipe">
-        <div id="title">
-          <h1>Lorum Ipsum</h1>
+    <div id="view-recipe">
+      <div id="title">
+        <h1>Lorum Ipsum</h1>
+      </div>
+      <div id="diff-dur">
+        <div id="difficulty-view">
+          Easy
         </div>
-        <div id="diff-dur">
-          <div id="difficulty-view">
-            Easy
+        <div id="duration-view">
+          2 hr
+        </div>
+      </div>
+      <h2>Ingredients</h2>
+      <div id="view-ingredients">
+        <div class="ingredient" id="ingredient1">
+          <div class="ingredient-dash">- </div>
+          <div class="ingredient-text">
+            <!-- Eggslet recipe = [difficulty, duration, ingredientsTable, instructionsTable] -->
           </div>
-          <div id="duration-view">
-            2 hr
-          </div>
-        </div>
-        <h2>Ingredients</h2>
-        <div id="view-ingredients">
-          <div class="ingredient" id="ingredient1">
-            <div class="ingredient-dash">- </div>
-            <div class="ingredient-text">
-              <!-- Eggslet recipe = [difficulty, duration, ingredientsTable, instructionsTable] -->
-            </div>
-            
-          </div> 
-        
-        </div>
-        <h2>Instructions</h2>
 
-        <div id="view-instructions">
-          
-          <div class="instruction" >
-            <div class="instruction-number">1.</div>
-            <div class="instruction-text">
-              Add eggs into a bowl and beat.
-            </div>
-          </div>
-        </div>
-
-        <div class="buttons" id="view-buttons">
-          <div class="button" id="delete-recipe" onclick="deleteRecipe()">Delete Recipe</div>
-          <div class="button" id="close-recipe" onclick="closeRecipeView()">Close</div>
         </div>
 
       </div>
+      <h2>Instructions</h2>
+
+      <div id="view-instructions">
+
+        <div class="instruction">
+          <div class="instruction-number">1.</div>
+          <div class="instruction-text">
+            Add eggs into a bowl and beat.
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons" id="view-buttons">
+        <div class="button" id="delete-recipe" onclick="deleteRecipe()">Delete Recipe</div>
+        <div class="button" id="close-recipe" onclick="closeRecipeView()">Close</div>
+      </div>
+
+    </div>
 
     <div id="recipe-scroll">
 
@@ -192,23 +187,23 @@
 
     <img id="add-button" src="icons/add.png" width="50" height="50" onclick="openRecipeForm()" />
     <footer>
-            <button class="tablink" onclick="window.location.href='index.html'">
-                <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
-                <p1>Inventory</p1>
-            </button>
-            <button class="tablink" onclick="window.location.href='Grocery_tab.html'">
-                <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50">
-                <p1>Groceries</p1>
-            </button>
-            <button class="tablink active" onclick="window.location.href='Recipes.html'">
-                <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
-                <p1>Recipes</p1>
-            </button>
-            <button class="tablink" onclick="window.location.href='MyHousehold.html'" id=" defaultOpen">
-                <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
-                <p1>My Household</p1>
-            </button>
-        </footer>
+      <button class="tablink" onclick="window.location.href='index.html'">
+        <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50">
+        <p1>Inventory</p1>
+      </button>
+      <button class="tablink" onclick="window.location.href='Grocery_tab.html'">
+        <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50">
+        <p1>Groceries</p1>
+      </button>
+      <button class="tablink active" onclick="window.location.href='Recipes.html'">
+        <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50">
+        <p1>Recipes</p1>
+      </button>
+      <button class="tablink" onclick="window.location.href='MyHousehold.html'" id=" defaultOpen">
+        <img class="tablink_icon" src="icons/home.svg" width="50" height="50">
+        <p1>My Household</p1>
+      </button>
+    </footer>
 </body>
 
 </html>
