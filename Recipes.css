@@ -96,11 +96,42 @@ body {
   position: relative;
   /* height: 100%; 960px - 50 - 5 - 33 - 2.5 - 96 */
   /* height: 777px; */
-  height: 753px;
+  height: 683px;
   width: 100%;
   margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+#pills-div {
+  display: flex;
+  height: 70px;
+  width: 100%;
+  gap: 10px;
+  font-size: 24px;
+  margin: 0;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-top: 3px solid black;
+  
+  background-color: #e6d9cd;
+}
+
+.pill {
+  border: 2px solid black;
+  height: fit-content;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 30px;
+  text-wrap: nowrap;
+  cursor: pointer;
+  background-color: #fdf7f1;
+  transition: background-color 0.15s;
+}
+
+.pill:hover {
+  background-color: #e6d9cd;
 }
 
 #add-button {
