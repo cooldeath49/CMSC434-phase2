@@ -153,11 +153,37 @@
             }
         });
 
-
         document.addEventListener("focusout", function (event) {
             if (event.target.matches("input[type='text'], input[type='date'], textarea")) {
                 document.getElementById("keyboard").style.display = "none";
             }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const title = "Costco";
+            let defaultList = JSON.parse(
+                localStorage.getItem(`groceryLists ${title}`)
+            );
+            defaultList = {
+                title: "Costco",
+                date: "2026-11-05",
+                items: ["Apples", "Bananas"]
+            };
+
+            localStorage.setItem(
+                `groceryLists ${title}`,
+                JSON.stringify(defaultList)
+            );
+            document.getElementById("grocery_lists").innerHTML += `
+            <div class="grocery_list" id="grocery ${title}">
+                <h2><u>${title} added on: ${defaultList.date}</u></h2>
+                <div id="add_form_${title}"></div>
+                <div id="grocery-list ${title}"></div>
+                <img id="add_item ${title}" src="icons/add.png" width="25" height="25" onclick="openAddForm('${title}')">
+            </div>
+            `;
+
+            makeList(title);
         });
 
     </script>

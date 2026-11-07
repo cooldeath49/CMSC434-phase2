@@ -301,6 +301,10 @@ button {
     width: 100%;
     }
 
+    .device .header {
+    border-bottom: none;
+    }
+
 
     /* #addItemForm{
     color: #3A2C26;
