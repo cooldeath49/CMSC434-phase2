@@ -293,6 +293,15 @@ button {
     flex-shrink: 0;
     }
 
+    #keyboard {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    }
+
+
     /* #addItemForm{
     color: #3A2C26;
     background-color: #F9D2BA;

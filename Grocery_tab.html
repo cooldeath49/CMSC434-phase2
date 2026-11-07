@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kitchen Kompanion</title>
@@ -9,80 +10,79 @@
     <link rel="stylesheet" href="Grocery.css" />
     <link rel="stylesheet" href="global.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+        href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+</head>
 
-  <body>
+<body>
     <script>
-      function removeGroceryItem(title, index) {
-        let target_list = JSON.parse(
-          localStorage.getItem(`groceryLists ${title}`),
-        );
-        target_list.items.splice(index, 1);
-        localStorage.setItem(
-          `groceryLists ${title}`,
-          JSON.stringify(target_list),
-        );
-        makeList(title);
-      }
+        function removeGroceryItem(title, index) {
+            let target_list = JSON.parse(
+                localStorage.getItem(`groceryLists ${title}`),
+            );
+            target_list.items.splice(index, 1);
+            localStorage.setItem(
+                `groceryLists ${title}`,
+                JSON.stringify(target_list),
+            );
+            makeList(title);
+        }
 
-      function addGroceryListPopup() {
-        //grocery add button is pressed
-        document.getElementById("grocery_list_form").style.display = "block";
-      }
+        function addGroceryListPopup() {
+            //grocery add button is pressed
+            document.getElementById("grocery_list_form").style.display = "block";
+        }
 
-      function closeForm() {
-        //closes the grocery add button popup
-        document.getElementById("grocery_list_form").style.display = "none";
-      }
+        function closeForm() {
+            //closes the grocery add button popup
+            document.getElementById("grocery_list_form").style.display = "none";
+        }
 
-      function add_item_buttonShow(title) {
-        document.getElementById("add_item " + title).style.display = "block";
-      }
+        function add_item_buttonShow(title) {
+            document.getElementById("add_item " + title).style.display = "block";
+        }
 
-      // function add_item_buttonClose() {
-      //     document.getElementById("add_item_button").style.display = "block";
-      // }
+        // function add_item_buttonClose() {
+        //     document.getElementById("add_item_button").style.display = "block";
+        // }
 
-      function closeItemForm() {
-        // document.getElementsByClass("list_item_form").style.display = "none";
-        document.querySelectorAll(".list_item_form").forEach((element) => {
-          element.style.display = "none";
-        });
-      }
+        function closeItemForm() {
+            // document.getElementsByClass("list_item_form").style.display = "none";
+            document.querySelectorAll(".list_item_form").forEach((element) => {
+                element.style.display = "none";
+            });
+        }
 
-      function addItemToGroceryList(event, title) {
-        console.log("Adding item to:", title);
-        event.preventDefault();
-        // const itemName = document.getElementById("itemName").value;
-        const itemName = event.target.elements["itemName"].value;
-        let target_list = JSON.parse(
-          localStorage.getItem(`groceryLists ${title}`),
-        );
-        target_list.items.push(itemName);
-        localStorage.setItem(
-          `groceryLists ${title}`,
-          JSON.stringify(target_list),
-        );
-        closeItemForm();
-        makeList(title);
-      }
+        function addItemToGroceryList(event, title) {
+            console.log("Adding item to:", title);
+            event.preventDefault();
+            // const itemName = document.getElementById("itemName").value;
+            const itemName = event.target.elements["itemName"].value;
+            let target_list = JSON.parse(
+                localStorage.getItem(`groceryLists ${title}`),
+            );
+            target_list.items.push(itemName);
+            localStorage.setItem(
+                `groceryLists ${title}`,
+                JSON.stringify(target_list),
+            );
+            closeItemForm();
+            makeList(title);
+        }
 
-      function makeList(title) {
-        let target_element = document.getElementById("grocery-list " + title);
-        let target_list = JSON.parse(
-          localStorage.getItem(`groceryLists ${title}`),
-        );
+        function makeList(title) {
+            let target_element = document.getElementById("grocery-list " + title);
+            let target_list = JSON.parse(
+                localStorage.getItem(`groceryLists ${title}`),
+            );
 
-        console.log(target_list);
-        // localStorage.setItem("currList", JSON.stringify());
-        closeItemForm();
-        target_element.innerHTML = "";
-        target_element.innerHTML += `<ul>`;
-        target_list.items.forEach((x, i) => {
-          target_element.innerHTML += `
+            console.log(target_list);
+            // localStorage.setItem("currList", JSON.stringify());
+            closeItemForm();
+            target_element.innerHTML = "";
+            target_element.innerHTML += `<ul>`;
+            target_list.items.forEach((x, i) => {
+                target_element.innerHTML += `
                  <li>
                     <div class='grocery_item'>
                     <h3>${x}</h3>
@@ -90,16 +90,16 @@
                     </div>
                     </li>
                     `;
-        });
-        target_element.innerHTML += `</ul>`;
-      }
+            });
+            target_element.innerHTML += `</ul>`;
+        }
 
-      function openAddForm(title) {
-        let item_form = document.getElementById(`add_form_${title}`);
-        // let check = document.getElementById("list_item_form");
+        function openAddForm(title) {
+            let item_form = document.getElementById(`add_form_${title}`);
+            // let check = document.getElementById("list_item_form");
 
-        item_form.style.display = "block";
-        item_form.innerHTML = `<div class="form-popup list_item_form" id="list_item_form_${title}">
+            item_form.style.display = "block";
+            item_form.innerHTML = `<div class="form-popup list_item_form" id="list_item_form_${title}">
            <form id="addItemForm" onsubmit="addItemToGroceryList(event, '${title}')">
                <h1>Add Item To ${title}</h1>
 
@@ -113,28 +113,28 @@
            </form>
             </div>`;
 
-        // console.log(title + 'was here');
-        document.getElementById(`list_item_form_${title}`).style.display =
-          "block";
-      }
+            // console.log(title + 'was here');
+            document.getElementById(`list_item_form_${title}`).style.display =
+                "block";
+        }
 
-      function addGroceryList(event) {
-        event.preventDefault(); //resets the form
-        const title = document.getElementById("title").value;
-        const date = document.getElementById("date").value;
-        const groceryList = {
-          title: title,
-          date: date,
-          items: [],
-        };
-        localStorage.setItem(
-          `groceryLists ${title}`,
-          JSON.stringify(groceryList),
-        );
-        console.log(groceryList);
-        closeForm();
+        function addGroceryList(event) {
+            event.preventDefault(); //resets the form
+            const title = document.getElementById("title").value;
+            const date = document.getElementById("date").value;
+            const groceryList = {
+                title: title,
+                date: date,
+                items: [],
+            };
+            localStorage.setItem(
+                `groceryLists ${title}`,
+                JSON.stringify(groceryList),
+            );
+            console.log(groceryList);
+            closeForm();
 
-        document.getElementById("grocery_lists").innerHTML += `
+            document.getElementById("grocery_lists").innerHTML += `
             <div class='grocery_list' id="grocery ${title}">
                 <h2><u>${title} added on: ${date}</u></h2>
                 <div id='add_form_${title}'></div>
@@ -143,9 +143,23 @@
                 <img id="add_item ${title}" src="icons/add.png" width="25" height="25" onclick="openAddForm('${title}')">
             </div> 
             `;
-        add_item_buttonShow(title);
-        document.getElementById("form-container").reset();
-      }
+            add_item_buttonShow(title);
+            document.getElementById("form-container").reset();
+        }
+
+        document.addEventListener("focusin", function (event) {
+            if (event.target.matches("input[type='text'], input[type='date'], textarea")) {
+                document.getElementById("keyboard").style.display = "block";
+            }
+        });
+
+
+        document.addEventListener("focusout", function (event) {
+            if (event.target.matches("input[type='text'], input[type='date'], textarea")) {
+                document.getElementById("keyboard").style.display = "none";
+            }
+        });
+
     </script>
 
     <!-- sample grocery list div, tso be added everytime someone adds a new list -->
@@ -158,61 +172,39 @@
     -->
 
     <div class="device">
-      <div class="header">
-        <div class="header_logo">
-          <img src="icons/leaves.svg" width="50" height="50" />
-          <h1>Groceries</h1>
+        <div class="header">
+            <div class="header_logo">
+                <img src="icons/leaves.svg" width="50" height="50" />
+                <h1>Groceries</h1>
+            </div>
         </div>
-      </div>
-      <div class="body">
-        <!-- add button-->
-        <!-- goes to addgrocerylistpopup() -->
-        <img
-          id="add_button"
-          src="icons/add.png"
-          width="50"
-          height="50"
-          onclick="addGroceryListPopup()"
-        />
-      </div>
+        <div class="body">
+            <!-- add button-->
+            <!-- goes to addgrocerylistpopup() -->
+            <img id="add_button" src="icons/add.png" width="50" height="50" onclick="addGroceryListPopup()" />
+        </div>
 
-      <div id="grocery_lists"></div>
-      <!-- <div id="item_lists"></div> -->
-      <!-- <img id="add_item_button" src="/add.png" width="25" height="25" onclick="openAddForm()"> -->
+        <div id="grocery_lists"></div>
+        <!-- <div id="item_lists"></div> -->
+        <!-- <img id="add_item_button" src="/add.png" width="25" height="25" onclick="openAddForm()"> -->
 
-      <!-- popup form for when the add list button is pressed -->
-      <div class="form-popup" id="grocery_list_form">
-        <form
-          class="form-container"
-          id="form-container"
-          onsubmit="addGroceryList(event)"
-        >
-          <h1>New List</h1>
+        <!-- popup form for when the add list button is pressed -->
+        <div class="form-popup" id="grocery_list_form">
+            <form class="form-container" id="form-container" onsubmit="addGroceryList(event)">
+                <h1>New List</h1>
 
-          <label for="title"><b>Title</b></label>
-          <input
-            type="text"
-            id="title"
-            placeholder="Enter Title"
-            name="title"
-            required
-          /><br /><br />
+                <label for="title"><b>Title</b></label>
+                <input type="text" id="title" placeholder="Enter Title" name="title" required /><br /><br />
 
-          <label for="date"><b>Date</b></label>
-          <input
-            type="date"
-            id="date"
-            placeholder="Enter Date"
-            name="date"
-            required
-          /><br /><br />
+                <label for="date"><b>Date</b></label>
+                <input type="date" id="date" placeholder="Enter Date" name="date" required /><br /><br />
 
-          <button type="submit">Submit</button>
-          <button type="button" onclick="closeForm()">Close</button>
-        </form>
-      </div>
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeForm()">Close</button>
+            </form>
+        </div>
 
-      <!-- <div class="form-popup" id="list_item_form">
+        <!-- <div class="form-popup" id="list_item_form">
             <form id="addItemForm" onsubmit="addItemToGroceryList(event)">
                 <h1>Add Item To </h1>
 
@@ -224,52 +216,27 @@
             </form>
         </div> -->
 
-      <!-- footer -->
-      <footer>
-        <button class="tablink" onclick="window.location.href = 'index.html'">
-          <img
-            class="tablink_icon"
-            src="icons/inventory.svg"
-            width="50"
-            height="50"
-          />
-          <p1>Inventory</p1>
-        </button>
-        <button
-          class="tablink active"
-          onclick="window.location.href = 'Grocery_tab.html'"
-        >
-          <img
-            class="tablink_icon"
-            src="icons/groceries.svg"
-            width="50"
-            height="50"
-          />
-          <p1>Groceries</p1>
-        </button>
-        <button class="tablink" onclick="window.location.href = 'Recipes.html'">
-          <img
-            class="tablink_icon"
-            src="icons/recipes.svg"
-            width="50"
-            height="50"
-          />
-          <p1>Recipes</p1>
-        </button>
-        <button
-          class="tablink"
-          onclick="window.location.href = 'MyHousehold.html'"
-          id=" defaultOpen"
-        >
-          <img
-            class="tablink_icon"
-            src="icons/home.svg"
-            width="50"
-            height="50"
-          />
-          <p1>My Household</p1>
-        </button>
-      </footer>
+        <!-- footer -->
+        <footer>
+            <button class="tablink" onclick="window.location.href = 'index.html'">
+                <img class="tablink_icon" src="icons/inventory.svg" width="50" height="50" />
+                <p1>Inventory</p1>
+            </button>
+            <button class="tablink active" onclick="window.location.href = 'Grocery_tab.html'">
+                <img class="tablink_icon" src="icons/groceries.svg" width="50" height="50" />
+                <p1>Groceries</p1>
+            </button>
+            <button class="tablink" onclick="window.location.href = 'Recipes.html'">
+                <img class="tablink_icon" src="icons/recipes.svg" width="50" height="50" />
+                <p1>Recipes</p1>
+            </button>
+            <button class="tablink" onclick="window.location.href = 'MyHousehold.html'" id=" defaultOpen">
+                <img class="tablink_icon" src="icons/home.svg" width="50" height="50" />
+                <p1>My Household</p1>
+            </button>
+        </footer>
+        <img id="keyboard" src="icons/keyboard.png">
     </div>
-  </body>
+</body>
+
 </html>
